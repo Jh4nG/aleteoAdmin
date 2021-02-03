@@ -1,7 +1,7 @@
 <div class="content-body"><!-- stats -->
     <div class="row">
         <div class="col-xl-1 col-lg-1 col-xs-1 form-group">
-            <button type="button" class="btn btn-success">Añadir</button>
+            <button type="button" class="btn btn-success" onclick="_PodCast.modalAñadir()">Añadir</button>
         </div>
     </div>
     
@@ -26,3 +26,4 @@
         </div>
     </div>
 </div>
+<script src="js/podcast.js"></script>

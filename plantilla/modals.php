@@ -4,7 +4,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 id="modal-title-md" class="modal-title">mediano</h4>
+          <h4 id="modal-title-md" class="modal-title ">mediano</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div id="modal-body-md" class="modal-body">
