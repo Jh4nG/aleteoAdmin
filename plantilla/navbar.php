@@ -22,6 +22,13 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item"><a href="#"><i class="icon-stack-2"></i><span data-i18n="nav.page_layouts.main" class="menu-title">Admin Potcast</span></a>
+                <ul class="menu-content">
+                    <li id="navleftpodcast">
+                        <a href="#" onclick="_Admin.traerVista('podcast/podcast','podcast')" data-i18n="nav.page_layouts.1_column" class="menu-item">Podcast</a>
+                    </li>
+                </ul>
+            </li>
             <!-- Suport -->
             <li class=" navigation-header">
                 <span data-i18n="nav.category.support">Otros</span><i data-toggle="tooltip" data-placement="right" data-original-title="Support" class="icon-ellipsis icon-ellipsis"></i>
