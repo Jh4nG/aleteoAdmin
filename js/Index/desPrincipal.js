@@ -21,9 +21,24 @@ var _Estadistico = (function (){
         },
         {
           "width": "15%"
+        },
+        {
+          "width": "15%"
+        },
+        {
+          "width": "15%"
+        },
+        {
+          "width": "15%"
+        },
+        {
+          "width": "15%"
+        },
+        {
+          "width": "15%"
         }
     ];
-    TablesDes = $("#tableDesPrincipal").DataTable({
+    TablesDes = $("#tableIndex").DataTable({
         pagingType: "numbers",
         language: lang_dataTable,
         autoWidth: false,
@@ -42,5 +57,10 @@ var _Estadistico = (function (){
 })(jQuery);
 
 $(document).ready(function(){
-    
+  $('input[type="checkbox"]').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: false
+  });
+  
 });

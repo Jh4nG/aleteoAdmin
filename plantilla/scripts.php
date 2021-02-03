@@ -20,6 +20,8 @@
     <script src="app-assets/js/scripts/sweetAlert/sweetalert.min.js" type="text/javascript"></script>
     <script src="app-assets/js/scripts/dataTable/jquery.dataTables.js" type="text/javascript"></script>
     <script src="js/admin.js" type="text/javascript"></script>
+    <script src="fontawesome/js/all.js" type="text/javascript"></script>
+    <script src="app-assets/js/scripts/icheck/js/icheck.min.js" type="text/javascript"></script>
 
     <!-- Incluir modals -->
     <?php include 'plantilla/modals.php'; ?>
