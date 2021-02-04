@@ -15,6 +15,15 @@
                     </li>
                 </ul>
             </li>
+
+            <li class=" nav-item"><a href="#"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Administración</span></a>
+                <ul class="menu-content">
+                    <li class="active" id="navleftcategorias">
+                        <a href="#" onclick="_Admin.traerVista('Admin/categorias','categorias')" data-i18n="nav.dash.main" class="menu-item">Categorías</a>
+                    </li>
+                </ul>
+            </li>
+            
             <li class=" nav-item"><a href="#"><i class="icon-stack-2"></i><span data-i18n="nav.page_layouts.main" class="menu-title">Inicio</span></a>
                 <ul class="menu-content">
                     <li id="navleftdesPrincipal">

@@ -1,42 +1,18 @@
 var _Estadistico = (function (){
     var TablesDes;
     _columnsDes = [
-        {
-          "width": "1%"
-        },
-        {
-          "width": "1%"
-        },
-        {
-          "width": "20%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        },
-        {
-          "width": "15%"
-        }
+        {"width": "1%"},
+        {"width": "1%"},
+        {"width": "20%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"},
+        {"width": "15%"}
     ];
     TablesDes = $("#tableIndex").DataTable({
         pagingType: "numbers",
@@ -57,10 +33,5 @@ var _Estadistico = (function (){
 })(jQuery);
 
 $(document).ready(function(){
-  $('input[type="checkbox"]').iCheck({
-    checkboxClass: 'icheckbox_square-blue',
-    radioClass: 'iradio_square-blue',
-    increaseArea: false
-  });
   
 });

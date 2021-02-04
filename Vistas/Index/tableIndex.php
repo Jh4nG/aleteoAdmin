@@ -24,7 +24,8 @@
             </ul>
         </div>
     </div>
-    
+    <br>
+    <br>
     <div class="table-responsive">
         <table class="display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact nowrap" id="tableIndex" width="100%">
             <thead>
