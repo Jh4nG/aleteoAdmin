@@ -77,49 +77,96 @@
   </div>
 
   <div class="modal" id="modalAnadirAudio" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Añadir Nuevo Audio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Añadir Nuevo Audio</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="formAnadirAudio" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="nameAudio" name="nameAudio" placeholder="Nombre" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <textarea class="form-control" name="descripcionAudio" id="descripcionAudio" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                      <label class="control-label"><i class="fas fa-file-audio"></i> Cargar Audio</label>
+                  </div>
+              </div>  
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input  id="audio" name="audio" type="file" accept="audio/*" required>
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Cargar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
       </div>
-      <div class="modal-body">
-      <form id="formAnadirAudio" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="nameAudio" name="nameAudio" placeholder="Nombre" required>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <textarea class="form-control" name="descripcionAudio" id="descripcionAudio" placeholder="Descripción" required></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <label class="control-label"><i class="fas fa-file-audio"></i> Cargar Audio</label>
-                </div>
-            </div>  
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input  id="audio" name="audio" type="file" accept="audio/*" required>
-                    </div>
-                </div>
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Cargar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-      </form>
     </div>
   </div>
-</div>
+  
+  <div class="modal" id="modalEditarAudio" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Podcast</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="formAnadirAudio" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="nameEditAudio" name="nameEditAudio" placeholder="Nombre" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <textarea class="form-control" name="descripcionEditAudio" id="descripcionEditAudio" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                      <label class="control-label"><i class="fas fa-file-audio"></i> Cargar Audio</label>
+                  </div>
+              </div>  
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input  id="audioEdit" name="audioEdit" type="file" accept="audio/*" required>
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning">Editar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 

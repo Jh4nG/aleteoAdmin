@@ -17,7 +17,9 @@
                                 <td>Descripción </td>
                                 <td>Link </td>
                                 <td>Audio </td>
+                                <td>Id Sección </td>
                                 <td>Fecha Creación </td>
+                                <td>Opciones </td>
                             </tr>
                         </thead>
                     </table>
