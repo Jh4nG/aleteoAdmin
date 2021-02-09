@@ -102,6 +102,14 @@
                   </div>
               </div>
               <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="control-label"> Categoría Podcast</label>
+                          <select name="catEditPodcast" id="catPodcast" class="form-control"></select>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
                   <div class="col-md-4">
                       <label class="control-label"><i class="fas fa-file-audio"></i> Cargar Audio</label>
                   </div>
@@ -133,7 +141,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <form id="formAnadirAudio" enctype="multipart/form-data">
+        <form id="formEditarAudio" enctype="multipart/form-data">
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
@@ -149,17 +157,27 @@
                   </div>
               </div>
               <div class="row">
-                  <div class="col-md-4">
-                      <label class="control-label"><i class="fas fa-file-audio"></i> Cargar Audio</label>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="control-label"> Categoría Podcast</label>
+                          <select name="catPodcast" id="catEditPodcast" class="form-control"></select>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <label class="control-label"><i class="fas fa-file-audio"></i> Cargar Audio si desea reemplazar el existente</label>
                   </div>
               </div>  
               <div class="row">
                   <div class="col-md-6">
                       <div class="form-group">
-                          <input  id="audioEdit" name="audioEdit" type="file" accept="audio/*" required>
+                          <input  id="audioEdit" name="audioEdit" type="file" accept="audio/*">
                       </div>
                   </div>
               </div>
+              <input type="hidden" id="idPodcast" name="idPodcast">
+              <input type="hidden" id="linkBorrar" name="linkBorrar">
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-warning">Editar</button>

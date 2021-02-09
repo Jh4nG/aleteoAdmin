@@ -8,20 +8,35 @@ class Podcast extends Conexion
         $this->dirAudios = dirname(__DIR__). '/audios/';
     }
 
+    public function listarCategoriaPodcast()
+    {
+        $sql="SELECT * FROM categoria_podcast ORDER BY id ASC";
+        $rdb = $this->con_aleteo->prepare($sql);
+        if($rdb->execute()){
+            $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
+            echo json_encode($obj);
+        }else{
+            echo json_encode(false);
+        }
+    }
+
     public function listarPodcast($id = '')
     {
-        exit(var_dump($id));
         if ($id != ''){
-            $sql="SELECT * FROM podcast WHERE id = ?";
+            $sql="SELECT p.*, c.id AS cat FROM podcast AS p
+            INNER JOIN categoria_podcast AS c ON p.categoria = c.id
+            WHERE p.id = ?";
             $rdb = $this->con_aleteo->prepare($sql);
-            if($rdb->execute($id)){
+            if($rdb->execute([(int) $id["id"]])){
                 $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
                 echo json_encode($obj);
             }else{
                 echo json_encode(false);
             }
         }else{
-            $sql="SELECT * FROM podcast ORDER BY id ASC";
+            $sql="SELECT p.*, c.nombre AS cat FROM podcast AS p
+            INNER JOIN categoria_podcast AS c ON p.categoria = c.id
+            ORDER BY id ASC";
             $rdb = $this->con_aleteo->prepare($sql);
             if($rdb->execute()){
                 $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
@@ -35,8 +50,11 @@ class Podcast extends Conexion
     public function deletePodcast($parametro)
     {   
         $id = $parametro['id'];
+        $link = $parametro['link'];
 
-        $sql="DELETE FROM podcast WHERE ID = ?";
+        unlink($link);
+
+        $sql="DELETE FROM podcast WHERE id = ?";
         $rdb = $this->con_aleteo->prepare($sql);
 
         if($rdb->execute([$id])){
@@ -51,6 +69,7 @@ class Podcast extends Conexion
         $parametros = explode(",", $parametros);
         $nombre = $parametros[0];
         $descripcion = $parametros[1];
+        $categoria = $parametros[2];
         $id = uniqid();
         
         if (!file_exists($this->dirAudios)){
@@ -62,13 +81,57 @@ class Podcast extends Conexion
         move_uploaded_file($audio, $link);
         // $audioBase64 = "data:audio/". $audioName[1]. ";base64," . base64_encode(file_get_contents($link));
 
-        $sql = "INSERT INTO podcast(nombre,descripcion,link,id_seccion) VALUES(?,?, ?,?)";
+        $sql = "INSERT INTO podcast(nombre,descripcion,link,id_seccion,categoria) VALUES(?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
-        if($rdb->execute([$nombre, $descripcion, $link, 3])){
+        if($rdb->execute([$nombre, $descripcion, $link, 3, $categoria])){
             echo json_encode('insert');
         }else{
             echo json_encode('noinsert');
         }    
+    }
+
+    public function edit($parametros)
+    {   
+        $parametros = explode(",", $parametros);
+        $id = $parametros[0];
+        $nombre = $parametros[1];
+        $descripcion = $parametros[2];
+        $categoria = $parametros[3];
+        $linkBorrar = $parametros[4];
+        
+        if($_FILES["audioEdit"]["tmp_name"] != ''){
+            unlink($linkBorrar);
+            $idFile = uniqid();
+        
+            if (!file_exists($this->dirAudios)){
+                mkdir($this->dirAudios);
+            }
+            $audioName = explode(".", $_FILES["audioEdit"]["name"]);
+            $audio = $_FILES["audioEdit"]["tmp_name"];
+            $link = $this->dirAudios.$audioName[0].'_'.$idFile.'.'.$audioName[1];
+            move_uploaded_file($audio, $link);
+
+            $sql = "UPDATE podcast SET nombre = ?,
+            descripcion = ?, link = ?, categoria = ?
+            WHERE id = ?";
+            $rdb = $this->con_aleteo->prepare($sql);
+            if($rdb->execute([$nombre, $descripcion, $link, $categoria, $id])){
+                echo json_encode('edit');
+            }else{
+                echo json_encode('noedit');
+            }   
+        }else{
+            $sql = "UPDATE podcast SET nombre = ?,
+            descripcion = ?, categoria = ?
+            WHERE id = ?";
+            $rdb = $this->con_aleteo->prepare($sql);
+            if($rdb->execute([$nombre, $descripcion, $categoria, $id])){
+                echo json_encode('edit');
+            }else{
+                echo json_encode('noedit');
+            }   
+        }
+         
     }
 }
 

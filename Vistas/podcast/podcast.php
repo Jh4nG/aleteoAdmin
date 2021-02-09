@@ -9,14 +9,14 @@
         <div class="col-xl-12 col-lg-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact nowrap" id="tablePodCast" width="100%">
+                    <table class="table-responsive display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact nowrap" id="tablePodCast" width="100%">
                         <thead>
                             <tr>
                                 <td>Id </td>
                                 <td>Nombre </td>
                                 <td>Descripción </td>
                                 <td>Link </td>
-                                <td>Audio </td>
+                                <td>Categoría </td>
                                 <td>Id Sección </td>
                                 <td>Fecha Creación </td>
                                 <td>Opciones </td>
