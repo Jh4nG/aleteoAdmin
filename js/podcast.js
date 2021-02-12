@@ -30,6 +30,9 @@ var _PodCast = (function (){
     }
 
     var modalAñadir = ()=>{
+        $("#nameAudio").val('');
+        $("#descripcionAudio").val('');
+        $("#audio").val('');
         $("#modalAnadirAudio").modal('show');
     }
 
