@@ -5,7 +5,6 @@ class Podcast extends Conexion
 {
     public function __construct(){
         parent::__construct();
-        $this->dirAudios = dirname(__DIR__). '/audios/';
     }
 
     public function listarCategoriaPodcast()
@@ -72,12 +71,12 @@ class Podcast extends Conexion
         $categoria = $parametros[2];
         $id = uniqid();
         
-        if (!file_exists($this->dirAudios)){
-            mkdir($this->dirAudios);
+        if (!file_exists($this->aleteo["rutaAudios"])){
+            mkdir($this->aleteo["rutaAudios"]);
         }
         $audioName = explode(".", $_FILES["audio"]["name"]);
         $audio = $_FILES["audio"]["tmp_name"];
-        $link = $this->dirAudios.$audioName[0].'_'.$id.'.'.$audioName[1];
+        $link = $this->aleteo["rutaAudios"].$audioName[0].'_'.$id.'.'.$audioName[1];
         move_uploaded_file($audio, $link);
         // $audioBase64 = "data:audio/". $audioName[1]. ";base64," . base64_encode(file_get_contents($link));
 
@@ -103,12 +102,12 @@ class Podcast extends Conexion
             unlink($linkBorrar);
             $idFile = uniqid();
         
-            if (!file_exists($this->dirAudios)){
-                mkdir($this->dirAudios);
+            if (!file_exists($this->aleteo["rutaAudios"])){
+                mkdir($this->aleteo["rutaAudios"]);
             }
             $audioName = explode(".", $_FILES["audioEdit"]["name"]);
             $audio = $_FILES["audioEdit"]["tmp_name"];
-            $link = $this->dirAudios.$audioName[0].'_'.$idFile.'.'.$audioName[1];
+            $link = $this->aleteo["rutaAudios"].$audioName[0].'_'.$idFile.'.'.$audioName[1];
             move_uploaded_file($audio, $link);
 
             $sql = "UPDATE podcast SET nombre = ?,

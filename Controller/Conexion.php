@@ -1,5 +1,5 @@
 <?php
-
+require_once dirname(__FILE__)."/.global.php";
 class Conexion {
 
     protected $con_aleteo;
@@ -9,9 +9,13 @@ class Conexion {
     private $user     = "root";
     private $password = "";
     private $dbname   = "aleteo";
+    public $aleteo;
 
     public function __construct(){
+        global $aleteo;
+        
         self::iniciar();
+        $this->aleteo = $aleteo;
     }
 
     private function iniciar(){
