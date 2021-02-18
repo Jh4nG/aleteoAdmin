@@ -21,6 +21,12 @@
                     <li class="active" id="navleftcategorias">
                         <a href="#" onclick="_Admin.traerVista('Admin/categorias','categorias')" data-i18n="nav.dash.main" class="menu-item">Categorías</a>
                     </li>
+                    <li id="navleftpodcast">
+                        <a href="#" onclick="_Admin.traerVista('podcast/podcast','podcast')" data-i18n="nav.page_layouts.1_column" class="menu-item">Podcast</a>
+                    </li>
+                    <li id="navleftOrganizaciones">
+                        <a href="#" onclick="_Admin.traerVista('organizaciones/organizaciones','organizaciones')" data-i18n="nav.page_layouts.1_column" class="menu-item">Organizaciones</a>
+                    </li>
                 </ul>
             </li>
             
@@ -28,13 +34,6 @@
                 <ul class="menu-content">
                     <li id="navleftdesPrincipal">
                         <a href="#" onclick="_Admin.traerVista('Index/desPrincipal','desPrincipal')" data-i18n="nav.page_layouts.1_column" class="menu-item">Deslizador Principal</a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item"><a href="#"><i class="icon-stack-2"></i><span data-i18n="nav.page_layouts.main" class="menu-title">Admin Potcast</span></a>
-                <ul class="menu-content">
-                    <li id="navleftpodcast">
-                        <a href="#" onclick="_Admin.traerVista('podcast/podcast','podcast')" data-i18n="nav.page_layouts.1_column" class="menu-item">Podcast</a>
                     </li>
                 </ul>
             </li>

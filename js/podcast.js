@@ -92,7 +92,6 @@ var _PodCast = (function (){
             },
         }).done(function(data){ 
             if(data){
-                console.log(data);
                 $.each(data,(i,e)=>{
                     var edit = '<a href="#" onclick="_PodCast.modalEditPodcast('+e.id+')" id="editarPodcast'+e.id+'" data-toggle="tooltip" data-placement="left" data-original-title="Editar Podcast"><span class="btn btn-warning btn-sm"><i class="far fa-edit fa-lg"></i></span></a>  ';
                     edit += '<a href="#" onclick="_PodCast.DeletePodcast('+e.id+')" id="deletePodcast'+e.id+'" data-link="'+e.link+'" data-toggle="tooltip" data-placement="right" data-original-title="Eliminar Podcast"><span class="btn btn-danger btn-sm"><i class="far fa-times-circle fa-lg"></i></span></a>';

@@ -188,3 +188,113 @@
     </div>
   </div>
 
+  <div class="modal" id="modalAnadirOrganizaciones" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Añadir Nueva Organización</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="formAnadirOrg" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="nameOrg" name="nameOrg" placeholder="Título" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <textarea class="form-control" name="descripcionOrg" id="descripcionOrg" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="1" id="orgActivo" name="orgActivo" style="margin-left: 0 !important;" checked>
+                      <label class="form-check-label" for="orgActivo">Activo</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                      <label class="control-label"><i class="fas fa-file-image"></i> Cargar Imagen</label>
+                  </div>
+              </div>  
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input  id="imagenOrg" name="imagenOrg" type="file" accept="image/png, .jpeg, .jpg" required>
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Cargar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalEditarOrg" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Organización</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="formEditarOrg" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="nameEditOrg" name="nameEditOrg" placeholder="Título" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <textarea class="form-control" name="descripcionEditOrg" id="descripcionEditOrg" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="1" id="orgActivoEdit" name="orgActivoEdit" style="margin-left: 0 !important;" checked>
+                      <label class="form-check-label" for="orgActivoEdit">Activo</label>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-8">
+                      <label class="control-label"><i class="fas fa-file-image"></i> Cargar Imagen si desea reemplazar la existente</label>
+                  </div>
+              </div>  
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input  id="imagenOrgEdit" name="imagenOrgEdit" type="file" accept="image/png, .jpeg, .jpg">
+                      </div>
+                  </div>
+              </div>
+              <input type="hidden" id="idOrg" name="idOrg">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning">Editar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>

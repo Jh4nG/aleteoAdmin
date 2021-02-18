@@ -82,7 +82,7 @@ class Podcast extends Conexion
 
         $sql = "INSERT INTO podcast(nombre,descripcion,link,id_seccion,categoria) VALUES(?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
-        if($rdb->execute([$nombre, $descripcion, $link, 3, $categoria])){
+        if($rdb->execute([$nombre, $descripcion, $audioName[0].'_'.$id.'.'.$audioName[1], 3, $categoria])){
             echo json_encode('insert');
         }else{
             echo json_encode('noinsert');
