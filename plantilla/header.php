@@ -37,12 +37,12 @@
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- END Custom CSS-->
-    <!-- BEGIN DatTable CSS-->
-    <link rel="shortcut icon" type="image/png" href="app-assets/js/scripts/dataTable/jquery.dataTables.css">
-    <!-- END DataTable CSS-->
     <!-- FontAwesome-->
     <link href="fontawesome/css/all.css">
     <!-- END FontAwesome-->
     <link href="app-assets/js/scripts/icheck/js/css/_all.css">
+    <!-- BEGIN DatTable CSS-->
+    <link rel="stylesheet" href="app-assets/js/scripts/dataTable/jquery.dataTables.css">
+    <!-- END DataTable CSS-->
 
   </head>

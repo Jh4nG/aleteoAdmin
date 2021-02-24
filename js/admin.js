@@ -45,6 +45,18 @@ function ajaxJson(ruta,data,type = 'post'){
     });
 }
 
+function ajaxJsonForm(ruta,data,type = 'post'){
+    return $.ajax({
+        url: ruta,
+        type: type,
+        dataType: 'json',
+        data: data,
+		contentType: false,
+		cache: false,
+		processData: false,
+    });
+}
+
 var lang_dataTable = {
 	"sLengthMenu": "Mostrar _MENU_ Registros",
 	"sZeroRecords": "No se encontraron resultados",
