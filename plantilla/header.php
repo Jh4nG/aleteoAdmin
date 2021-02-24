@@ -40,7 +40,7 @@
     <!-- FontAwesome-->
     <link href="fontawesome/css/all.css">
     <!-- END FontAwesome-->
-    <link href="app-assets/js/scripts/icheck/js/css/_all.css">
+    <link rel="stylesheet" href="app-assets/js/scripts/icheck/css/_all.css">
     <!-- BEGIN DatTable CSS-->
     <link rel="stylesheet" href="app-assets/js/scripts/dataTable/jquery.dataTables.css">
     <!-- END DataTable CSS-->
