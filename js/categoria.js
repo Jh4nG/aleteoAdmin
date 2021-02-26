@@ -48,11 +48,6 @@ var _Categoria = (function (){
         });
     }
 
-    
-    var limpiarModal = () =>{
-        $('#form-categoria')[0].reset();
-    }
-
     var addCategoria = ()=>{
         var data = new FormData($('#form-categoria')[0]);
         var ruta = 'Controller/Categoria.controller.php';
@@ -61,7 +56,7 @@ var _Categoria = (function (){
             if(resp){
                 add = ($('#').val() == 'addCategoria') ?'registrado':'editado';
                 swal('Éxito!','Se ha '+add+' con éxito.',_success);
-                limpiarModal();
+                limpiarFormulario('form-categoria');
                 listarCategorias();
                 $('#add-modal-categoria').modal('hide');
             }else{
@@ -71,13 +66,13 @@ var _Categoria = (function (){
     }
 
     var modalAdd = ()=>{
-        limpiarModal();
+        limpiarFormulario('form-categoria');
         $('#add-modal-categoria').modal('show');
         $('#metodoCat').val('addCategoria');
     }
 
     var modalEditCategoria = (id)=>{
-        limpiarModal();
+        limpiarFormulario('form-categoria');
         var ruta = 'Controller/Categoria.controller.php';
         var data = {"metodo":"getCategoria","parametros":{'id':id}}
         var type = 'post';
@@ -144,11 +139,6 @@ var _Categoria = (function (){
 })(jQuery);
 
 $(document).ready(function(){
-    $('input[type="checkbox"]').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: false
-    });
     _Categoria.init();
     $("#form-categoria").submit(function(event){
         event.preventDefault();

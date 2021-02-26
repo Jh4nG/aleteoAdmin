@@ -57,6 +57,10 @@ function ajaxJsonForm(ruta,data,type = 'post'){
     });
 }
 
+function limpiarFormulario (id){
+	$('#'+id)[0].reset();
+}
+
 var lang_dataTable = {
 	"sLengthMenu": "Mostrar _MENU_ Registros",
 	"sZeroRecords": "No se encontraron resultados",
@@ -91,8 +95,8 @@ var _Admin = (function (){
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
             if(data){
 				location.href ="login.php";
-				localStorage.removeItem('vista');
-				localStorage.removeItem('nav');
+				window.localStorage.setItem('vista', 'estadisticos');
+				window.localStorage.setItem('nav', 'estadisticos');
             }
         });
 	}

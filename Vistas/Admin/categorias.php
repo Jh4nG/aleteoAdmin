@@ -61,6 +61,6 @@
       </div>
       
     </div>
-  </div>
+</div>
 
 <script src="js/categoria.js"></script>
