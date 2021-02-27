@@ -60,7 +60,7 @@ class Index extends Conexion{
     public function editSecciones(){
         $p = $_POST;
         $f = $_FILES;
-        $name="";
+        $video = str_replace('width="560" height="315"','width="650" height="400"',$p['videoSeccion']);
         if($f['imgSeccion']['tmp_name'] != ''){ // Mover archivo a carpeta
             $data = $this->getSeccion(array('id'=>$p['idSec']),2);
             if(file_exists($this->aleteo["rutaImagenes"].$data[0]->sec_img)){
@@ -69,20 +69,31 @@ class Index extends Conexion{
             $name="Img".uniqid().'.'.explode(".", $f["imgSeccion"]["name"])[1];
             $link = $this->aleteo["rutaImagenes"].$name;
             move_uploaded_file($f['imgSeccion']['tmp_name'], $link);
+            $data = [$p['nomSeccion'],$p['titSeccion'],$p['descSeccion'],$video,$p['linkSeccion'],$p['iconSeccion'],$p['selSeccion'],$p['posSeccion'],$p['catSeccion'],$name,$p['idSec']];
+            $sql = "UPDATE secciones SET nombre = ?,
+                                        sec_titulo = ?,
+                                        sec_desc = ?,
+                                        sec_iframe = ?,
+                                        sec_link_redirect = ?,
+                                        sec_icon = ?,
+                                        sec_estado = ?,
+                                        sec_posicion = ?,
+                                        id_categoria = ?,
+                                        sec_img = ?
+                            WHERE id = ?";
+        }else{
+            $data = [$p['nomSeccion'],$p['titSeccion'],$p['descSeccion'],$video,$p['linkSeccion'],$p['iconSeccion'],$p['selSeccion'],$p['posSeccion'],$p['catSeccion'],$p['idSec']];
+            $sql = "UPDATE secciones SET nombre = ?,
+                                        sec_titulo = ?,
+                                        sec_desc = ?,
+                                        sec_iframe = ?,
+                                        sec_link_redirect = ?,
+                                        sec_icon = ?,
+                                        sec_estado = ?,
+                                        sec_posicion = ?,
+                                        id_categoria = ?
+                            WHERE id = ?";
         }
-        $video = str_replace('width="560" height="315"','width="650" height="400"',$p['videoSeccion']);
-        $data = [$p['nomSeccion'],$p['titSeccion'],$p['descSeccion'],$name,$video,$p['linkSeccion'],$p['iconSeccion'],$p['selSeccion'],$p['posSeccion'],$p['catSeccion'],$p['idSec']];
-        $sql = "UPDATE secciones SET nombre = ?,
-                                    sec_titulo = ?,
-                                    sec_desc = ?,
-                                    sec_img = ?,
-                                    sec_iframe = ?,
-                                    sec_link_redirect = ?,
-                                    sec_icon = ?,
-                                    sec_estado = ?,
-                                    sec_posicion = ?,
-                                    id_categoria = ? 
-                        WHERE id = ?";
         $rdb = $this->con_aleteo->prepare($sql);
         if($rdb->execute($data)){
             echo json_encode(true);
