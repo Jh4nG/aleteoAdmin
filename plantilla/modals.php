@@ -105,7 +105,7 @@
                   <div class="col-md-12">
                       <div class="form-group">
                           <label class="control-label"> Categoría Podcast</label>
-                          <select name="catEditPodcast" id="catPodcast" class="form-control"></select>
+                          <select name="catPodcast" id="catPodcast" class="form-control"></select>
                       </div>
                   </div>
               </div>
@@ -160,7 +160,7 @@
                   <div class="col-md-12">
                       <div class="form-group">
                           <label class="control-label"> Categoría Podcast</label>
-                          <select name="catPodcast" id="catEditPodcast" class="form-control"></select>
+                          <select name="catEditPodcast" id="catEditPodcast" class="form-control"></select>
                       </div>
                   </div>
               </div>
@@ -222,6 +222,17 @@
                   </div>
               </div>
               <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="control-label"> Tipo</label>
+                          <select name="tipoOrg" id="tipoOrg" class="form-control">
+                            <option value="organizaciones">Organizaciones</option>
+                            <option value="aliados">Aliados</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
                   <div class="col-md-4">
                       <label class="control-label"><i class="fas fa-file-image"></i> Cargar Imagen</label>
                   </div>
@@ -274,6 +285,17 @@
                       <input class="form-check-input" type="checkbox" value="1" id="orgActivoEdit" name="orgActivoEdit" style="margin-left: 0 !important;" checked>
                       <label class="form-check-label" for="orgActivoEdit">Activo</label>
                     </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="control-label"> Tipo</label>
+                          <select name="tipoOrgEdit" id="tipoOrgEdit" class="form-control">
+                            <option value="organizaciones">Organizaciones</option>
+                            <option value="aliados">Aliados</option>
+                          </select>
+                      </div>
                   </div>
               </div>
               <div class="row">

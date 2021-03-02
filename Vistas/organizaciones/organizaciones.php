@@ -18,6 +18,7 @@
                                 <td>Imagen </td>
                                 <td>fecha Creación </td>
                                 <td>Estado </td>
+                                <td>Tipo </td>
                                 <td>Opciones </td>
                             </tr>
                         </thead>
