@@ -63,12 +63,11 @@ class Podcast extends Conexion
         } 
     }
 
-    public function upload($parametros)
+    public function upload()
     {   
-        $parametros = explode(",", $parametros);
-        $nombre = $parametros[0];
-        $descripcion = $parametros[1];
-        $categoria = $parametros[2];
+        $nombre = $_POST['name'];
+        $descripcion = $_POST['desc'];
+        $categoria = $_POST['cat'];
         $id = uniqid();
         
         if (!file_exists($this->aleteo["rutaAudios"])){

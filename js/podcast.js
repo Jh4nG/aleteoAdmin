@@ -128,7 +128,9 @@ $(document).ready(function(){
         
         var form_data = new FormData(this); //Creates new FormData object
         form_data.append('metodo', 'upload');
-        form_data.append('parametros', [$("#nameAudio").val(), $("#descripcionAudio").val(), $("#catPodcast").val()]);
+        form_data.append('name', $("#nameAudio").val());
+        form_data.append('desc', $("#descripcionAudio").val());
+        form_data.append('cat', $("#catPodcast").val());
         
         $.ajax({
 	        url : "Controller/Podcast.controller.php",
