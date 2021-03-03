@@ -27,6 +27,9 @@
                     <li id="navleftOrganizaciones">
                         <a href="#" onclick="_Admin.traerVista('organizaciones/organizaciones','organizaciones')" data-i18n="nav.page_layouts.1_column" class="menu-item">Organizaciones</a>
                     </li>
+                    <li id="navleftconstruccion">
+                        <a href="#" onclick="_Admin.traerVista('Construccion/construccion','construccion')" data-i18n="nav.page_layouts.1_column" class="menu-item">Construcción</a>
+                    </li>
                 </ul>
             </li>
             

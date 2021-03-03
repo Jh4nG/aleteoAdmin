@@ -123,6 +123,7 @@ var _Inicio = (function (){
                 }
                 $('#linkSeccion').val(data[0].sec_link_redirect);
                 $('#iconSeccion').val(data[0].sec_icon);
+                $('#selSeccion option').removeAttr('selected');
                 $('#selSeccion option[value="'+data[0].sec_estado+'"]').attr('selected','');
                 $('#posSeccion').val(data[0].sec_posicion);
                 $('#catSeccion option[value="'+data[0].id_categoria+'"]').attr('selected','');
