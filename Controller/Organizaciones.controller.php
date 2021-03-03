@@ -36,15 +36,16 @@ class Organizaciones extends Conexion
         $titulo = $parametros[0];
         $descripcion = $parametros[1];
         $activo = $parametros[2] == 'true' ? 1 : 0;
+        $tipo = $parametros[3];
         
         $bytes = file_get_contents($_FILES["imagenOrg"]["tmp_name"]);
 		$code64 = base64_encode($bytes);
 		$extension = explode(".", $_FILES["imagenOrg"]["name"]);
 		$icon = "data:image/".$extension[1].";base64,".$code64; 
 
-        $sql = "INSERT INTO organizaciones(titulo,descripcion,imagen,activo) VALUES(?,?,?,?)";
+        $sql = "INSERT INTO organizaciones(titulo,descripcion,imagen,activo,tipo) VALUES(?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
-        if($rdb->execute([$titulo, $descripcion, $icon, $activo])){
+        if($rdb->execute([$titulo, $descripcion, $icon, $activo, $tipo])){
             echo json_encode('insert');
         }else{
             echo json_encode('noinsert');
@@ -58,6 +59,7 @@ class Organizaciones extends Conexion
         $titulo = $parametros[1];
         $descripcion = $parametros[2];
         $activo = $parametros[3] == 'true' ? 1 : 0;
+        $tipo = $parametros[4];
         
         if($_FILES["imagenOrgEdit"]["tmp_name"] != ''){
             
@@ -67,20 +69,20 @@ class Organizaciones extends Conexion
             $icon = "data:image/".$extension[1].";base64,".$code64;
 
             $sql = "UPDATE organizaciones SET titulo = ?,
-            descripcion = ?, activo = ?, imagen = ?
+            descripcion = ?, activo = ?, imagen = ?, tipo = ?
             WHERE id = ?";
             $rdb = $this->con_aleteo->prepare($sql);
-            if($rdb->execute([$titulo, $descripcion, $activo, $icon, $id])){
+            if($rdb->execute([$titulo, $descripcion, $activo, $icon, $tipo, $id])){
                 echo json_encode('edit');
             }else{
                 echo json_encode('noedit');
             }   
         }else{
             $sql = "UPDATE organizaciones SET titulo = ?,
-            descripcion = ?, activo = ?
+            descripcion = ?, activo = ?, tipo = ?
             WHERE id = ?";
             $rdb = $this->con_aleteo->prepare($sql);
-            if($rdb->execute([$titulo, $descripcion, $activo, $id])){
+            if($rdb->execute([$titulo, $descripcion, $activo, $tipo, $id])){
                 echo json_encode('edit');
             }else{
                 echo json_encode('noedit');
