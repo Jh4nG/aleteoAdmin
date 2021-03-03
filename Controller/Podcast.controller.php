@@ -91,11 +91,11 @@ class Podcast extends Conexion
     public function edit($parametros)
     {   
         $parametros = explode(",", $parametros);
-        $id = $parametros[0];
-        $nombre = $parametros[1];
-        $descripcion = $parametros[2];
-        $categoria = $parametros[3];
-        $linkBorrar = $parametros[4];
+        $id = $_POST['id'];
+        $nombre = $_POST['name'];
+        $descripcion = $_POST['desc'];
+        $categoria = $_POST['cat'];
+        $linkBorrar = $_POST['link'];
         
         if($_FILES["audioEdit"]["tmp_name"] != ''){
             unlink($linkBorrar);

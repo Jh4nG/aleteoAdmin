@@ -159,7 +159,11 @@ $(document).ready(function(){
         
         var form_data = new FormData(this); //Creates new FormData object
         form_data.append('metodo', 'edit');
-        form_data.append('parametros', [$("#idPodcast").val(), $("#nameEditAudio").val(), $("#descripcionEditAudio").val(), $("#catEditPodcast").val(), $("#linkBorrar").val()]);
+        form_data.append('id', $("#idPodcast").val());
+        form_data.append('name', $("#nameEditAudio").val());
+        form_data.append('desc', $("#descripcionEditAudio").val());
+        form_data.append('cat', $("#catEditPodcast").val());
+        form_data.append('link', $("#linkBorrar").val());
         
         $.ajax({
 	        url : "Controller/Podcast.controller.php",
