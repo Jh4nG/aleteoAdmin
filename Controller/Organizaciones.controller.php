@@ -32,11 +32,10 @@ class Organizaciones extends Conexion
 
     public function upload($parametros)
     {  
-        $parametros = explode(",", $parametros);
-        $titulo = $parametros[0];
-        $descripcion = $parametros[1];
-        $activo = $parametros[2] == 'true' ? 1 : 0;
-        $tipo = $parametros[3];
+        $titulo = $_POST['nameOrg'];
+        $descripcion = $_POST['desc'];
+        $activo = $_POST['activo'] == 'true' ? 1 : 0;
+        $tipo = $_POST['tipo'];
         
         $bytes = file_get_contents($_FILES["imagenOrg"]["tmp_name"]);
 		$code64 = base64_encode($bytes);
@@ -54,12 +53,11 @@ class Organizaciones extends Conexion
 
     public function edit($parametros)
     {   
-        $parametros = explode(",", $parametros);
-        $id = $parametros[0];
-        $titulo = $parametros[1];
-        $descripcion = $parametros[2];
-        $activo = $parametros[3] == 'true' ? 1 : 0;
-        $tipo = $parametros[4];
+        $id = $_POST['id'];
+        $titulo = $_POST['name'];
+        $descripcion = $_POST['desc'];
+        $activo = $_POST['activo'] == 'true' ? 1 : 0;
+        $tipo = $_POST['tipo'];
         
         if($_FILES["imagenOrgEdit"]["tmp_name"] != ''){
             

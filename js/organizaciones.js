@@ -113,7 +113,11 @@ $(document).ready(function () {
         event.preventDefault();
         var form_data = new FormData(this); //Creates new FormData object
         form_data.append('metodo', 'upload');
-        form_data.append('parametros', [$("#nameOrg").val(), $("#descripcionOrg").val(), document.getElementById("orgActivo").checked, $("#tipoOrg").val()]);
+        form_data.append('nameOrg', $("#nameOrg").val());
+        form_data.append('desc', $("#descripcionOrg").val());
+        form_data.append('activo', document.getElementById("orgActivo").checked);
+        form_data.append('tipo', $("#tipoOrg").val());
+        
         $.ajax({
             url : "Controller/Organizaciones.controller.php",
             type: "POST",
@@ -140,7 +144,12 @@ $(document).ready(function () {
         event.preventDefault();
         var form_data = new FormData(this); //Creates new FormData object
         form_data.append('metodo', 'edit');
-        form_data.append('parametros', [$("#idOrg").val(), $("#nameEditOrg").val(), $("#descripcionEditOrg").val(), document.getElementById("orgActivoEdit").checked, $("#tipoOrgEdit").val()]);
+        form_data.append('id', $("#idOrg").val());
+        form_data.append('name', $("#nameEditOrg").val());
+        form_data.append('desc', $("#descripcionEditOrg").val());
+        form_data.append('activo', document.getElementById("orgActivoEdit").checked);
+        form_data.append('tipo', $("#tipoOrgEdit").val());
+        
         $.ajax({
             url : "Controller/Organizaciones.controller.php",
             type: "POST",
