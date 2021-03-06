@@ -19,6 +19,7 @@
                                 <td>fecha Creación </td>
                                 <td>Estado </td>
                                 <td>Tipo </td>
+                                <td>Url </td>
                                 <td>Opciones </td>
                             </tr>
                         </thead>

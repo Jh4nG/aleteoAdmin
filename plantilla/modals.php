@@ -215,6 +215,13 @@
               </div>
               <div class="row">
                   <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="urlOrg" name="urlOrg" placeholder="URL" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="1" id="orgActivo" name="orgActivo" style="margin-left: 0 !important;" checked>
                       <label class="form-check-label" for="orgActivo">Activo</label>
@@ -276,6 +283,13 @@
                   <div class="col-md-12">
                       <div class="form-group">
                           <textarea class="form-control" name="descripcionEditOrg" id="descripcionEditOrg" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="urlEditOrg" name="urlEditOrg" placeholder="URL" required>
                       </div>
                   </div>
               </div>

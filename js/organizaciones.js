@@ -17,6 +17,7 @@ var _Organizaciones = (function () {
         $("#nameOrg").val("");
         $("#descripcionOrg").val("");
         $("#imagenOrg").val("");
+        $("#urlOrg").val("");
         $("#modalAnadirOrganizaciones").modal("show");
     };
 
@@ -30,6 +31,7 @@ var _Organizaciones = (function () {
             $("#idOrg").val(id);
             $("#nameEditOrg").val(data[0].titulo);
             $("#descripcionEditOrg").val(data[0].descripcion);
+            $("#urlEditOrg").val(data[0].url);
             $("#imagenOrgEdit").val('');
             $('#tipoOrgEdit option[value="'+data[0].tipo+'"]').prop('selected', 'selected');
             if(data[0].activo == 1){
@@ -91,6 +93,7 @@ var _Organizaciones = (function () {
                         e.fecha_creacion,
                         activo,
                         e.tipo,
+                        e.url,
                         edit
                     ]).draw();
                 });
@@ -117,6 +120,7 @@ $(document).ready(function () {
         form_data.append('desc', $("#descripcionOrg").val());
         form_data.append('activo', document.getElementById("orgActivo").checked);
         form_data.append('tipo', $("#tipoOrg").val());
+        form_data.append('url', $("#urlOrg").val());
         
         $.ajax({
             url : "Controller/Organizaciones.controller.php",
@@ -149,6 +153,7 @@ $(document).ready(function () {
         form_data.append('desc', $("#descripcionEditOrg").val());
         form_data.append('activo', document.getElementById("orgActivoEdit").checked);
         form_data.append('tipo', $("#tipoOrgEdit").val());
+        form_data.append('url', $("#urlEditOrg").val());
         
         $.ajax({
             url : "Controller/Organizaciones.controller.php",
