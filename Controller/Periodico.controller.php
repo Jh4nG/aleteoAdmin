@@ -3,8 +3,10 @@ require_once dirname(__FILE__).'/Conexion.php';
 
 class Periodico extends Conexion{
 
+    public $meses;
     public function __construct(){
         parent::__construct();
+        $this->meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     }
 
     public function listarPeriodico (){
@@ -35,8 +37,11 @@ class Periodico extends Conexion{
             $linkPie = $this->aleteo["rutaImagenes"].$nameImgPie;
             move_uploaded_file($f['pieimgPeriodico']['tmp_name'], $link);
         }
+        $fecha = $p['fecpublicoPeriodico'];
+        $mesAct = substr($meses[date('n')-1],0,3);
+        $fecha = substr($fecha,8,9).' '.substr($this->meses[substr($fecha,5,-3)-1],0,3).' '.substr($fecha,0,4);
 
-        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$nameImgPie,$p['fecpublicoPeriodico'],$p['fecpublPeriodico']];
+        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$nameImgPie,$fecha,$p['fecpublPeriodico']];
         $sql = "INSERT INTO periodico(per_titulo,per_contratitulo,per_autor,per_texto,per_link_img,per_link_pie_img,fecha_publico,fecha_publicacion) 
                         VALUES (?,?,?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
@@ -85,7 +90,10 @@ class Periodico extends Conexion{
             $linkPie = $this->aleteo["rutaImagenes"].$nameImgPie;
             move_uploaded_file($f['pieimgPeriodico']['tmp_name'], $link);
         }
-        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$nameImgPie,$p['fecpublicoPeriodico'],$p['fecpublPeriodico'],$p['idPer']];
+        $fecha = $p['fecpublicoPeriodico'];
+        $mesAct = substr($meses[date('n')-1],0,3);
+        $fecha = substr($fecha,8,9).' '.substr($this->meses[substr($fecha,5,-3)-1],0,3).' '.substr($fecha,0,4);
+        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$nameImgPie,$fecha,$p['fecpublPeriodico'],$p['idPer']];
         $sql = "UPDATE periodico SET per_titulo = ?
                                     ,per_contratitulo = ?
                                     ,per_autor = ?

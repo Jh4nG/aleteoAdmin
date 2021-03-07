@@ -86,20 +86,8 @@
     </div>
 </div>
 
-<script src="js/ckeditor.js"></script>
-<script src="js/es.js"></script>
-
 <script>
-	ClassicEditor
-		.create( document.querySelector( '#editor' ), {
-			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
+	
 </script>
 
 <script src="js/periodico.js"></script>

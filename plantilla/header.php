@@ -45,5 +45,6 @@
     <link rel="stylesheet" href="app-assets/js/scripts/dataTable/jquery.dataTables.css">
     <!-- END DataTable CSS-->
     <link rel="stylesheet" href="assets/css/contents.css">
-    
+    <script src="js/ckeditor.js"></script>
+    <script src="js/es.js"></script>
   </head>

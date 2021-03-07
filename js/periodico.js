@@ -1,5 +1,7 @@
 var _Periodico = (function (){
     var TablesPer;
+    var viewFragment;
+    var modelFragment;
     _columnsPer = [
         {"width": "1%"},
         {"width": "15%"},
@@ -66,11 +68,16 @@ var _Periodico = (function (){
         var data = {"metodo":"getPeriodico","parametros":{'id':id}}
         var type = 'post';
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
+            // editor.instances['content'].setData('');
             if(data){
                 $('#titPeriodico').val(data[0].per_titulo);
                 $('#contitPeriodico').val(data[0].per_contratitulo);
                 $('#autorPeriodico').val(data[0].per_autor);
-                $('.ck-editor__editable').html(data[0].per_texto);
+                var content = data[0].per_texto;
+                var viewFragment = editor.data.processor.toView( content );
+                var modelFragment = editor.data.toModel( viewFragment );
+
+                editor.model.insertContent( modelFragment );
                 $('#actuImg').html('<b style="color:red;">Sin foto</b>');
                 if(data[0].per_link_img != ''){
                     $('#actuImg').html('<b style="color:red;">Actualmente tiene foto</b>');
@@ -94,7 +101,7 @@ var _Periodico = (function (){
 
     var addPeriodico = ()=>{
         var data = new FormData($('#form-Periodico')[0]);
-        data.append('textPer',$('.ck-editor__editable').html());
+        data.append('textPer',$('#editor').html(''));
         var ruta = 'Controller/Periodico.controller.php';
         var type = 'post';
         $.when(ajaxJsonForm(ruta,data,type)).done((resp)=>{
@@ -116,7 +123,7 @@ var _Periodico = (function (){
         $('#metodoPer').val('addPeriodico');
         $('#actuImg').html('');
         $('#actupieImg').html('');
-        $('.ck-editor__editable').html('');
+        $('#editor').html('');
 
     }
 
@@ -136,4 +143,15 @@ $(document).ready(function(){
         event.preventDefault();
         _Periodico.addPeriodico();
     });
+
+    ClassicEditor
+    .create( document.querySelector( '#editor' ), {
+        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+    } )
+    .then( editor => {
+        window.editor = editor;
+    } )
+    .catch( err => {
+        console.error( err.stack );
+    } );
 });
