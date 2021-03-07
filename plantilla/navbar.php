@@ -30,6 +30,9 @@
                     <li id="navleftconstruccion">
                         <a href="#" onclick="_Admin.traerVista('Construccion/construccion','construccion')" data-i18n="nav.page_layouts.1_column" class="menu-item">Construcción</a>
                     </li>
+                    <li id="navleftPeriodico">
+                        <a href="#" onclick="_Admin.traerVista('Periodico/periodico','Periodico')" data-i18n="nav.page_layouts.1_column" class="menu-item">Periódico Digital</a>
+                    </li>
                 </ul>
             </li>
             

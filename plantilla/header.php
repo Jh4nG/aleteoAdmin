@@ -44,5 +44,6 @@
     <!-- BEGIN DatTable CSS-->
     <link rel="stylesheet" href="app-assets/js/scripts/dataTable/jquery.dataTables.css">
     <!-- END DataTable CSS-->
-
+    <link rel="stylesheet" href="assets/css/contents.css">
+    
   </head>
