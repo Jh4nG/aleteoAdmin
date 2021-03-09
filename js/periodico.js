@@ -69,6 +69,8 @@ var _Periodico = (function (){
         var type = 'post';
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
             // editor.instances['content'].setData('');
+            //contructEditor();
+            $('#editor').html('');
             if(data){
                 $('#titPeriodico').val(data[0].per_titulo);
                 $('#contitPeriodico').val(data[0].per_contratitulo);
@@ -82,11 +84,8 @@ var _Periodico = (function (){
                 if(data[0].per_link_img != ''){
                     $('#actuImg').html('<b style="color:red;">Actualmente tiene foto</b>');
                 }
-                $('#actupieImg').html('<b style="color:red;">Sin foto</b>');
-                if(data[0].per_link_pie_img != ''){
-                    $('#actupieImg').html('<b style="color:red;">Actualmente tiene foto</b>');
-                }
-                $('#fecpublicoPeriodico').val(data[0].fecha_publico);
+                $('#pieImgPer').val(data[0].per_link_pie_img);
+                $('#fecpublicoPeriodico').val(data[0].fecha_publico_date);
                 $('#fecpublPeriodico').val(data[0].fecha_publicacion);
                 $('#metodoPer').val('editPeriodico');
                 $('#idPer').remove();
@@ -101,7 +100,7 @@ var _Periodico = (function (){
 
     var addPeriodico = ()=>{
         var data = new FormData($('#form-Periodico')[0]);
-        data.append('textPer',$('#editor').html(''));
+        data.append('textPer',$('.ck-editor__editable').html());
         var ruta = 'Controller/Periodico.controller.php';
         var type = 'post';
         $.when(ajaxJsonForm(ruta,data,type)).done((resp)=>{
@@ -123,8 +122,24 @@ var _Periodico = (function (){
         $('#metodoPer').val('addPeriodico');
         $('#actuImg').html('');
         $('#actupieImg').html('');
-        $('#editor').html('');
+        contructEditor();
 
+    }
+
+    var contructEditor=()=>{
+        $('#editor').remove();
+        $('#divEditor').html('');
+        $('#divEditor').html('<div id="editor"></div>');
+        ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+        } )
+        .then( editor => {
+            window.editor = editor;
+        } )
+        .catch( err => {
+            console.error( err.stack );
+        } );
     }
 
     return {
@@ -143,7 +158,6 @@ $(document).ready(function(){
         event.preventDefault();
         _Periodico.addPeriodico();
     });
-
     ClassicEditor
     .create( document.querySelector( '#editor' ), {
         // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]

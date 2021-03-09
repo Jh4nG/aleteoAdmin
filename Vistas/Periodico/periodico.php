@@ -61,18 +61,14 @@
                             <input type="file" name="imgPeriodico" id="imgPeriodico" accept="image/,.jpg,.png,.jpeg">
                             <p id="actuImg"></p>
 
-                            <label for="pieimgPeriodico">Pie Imagen</label><br>
-                            <input type="file" name="pieimgPeriodico" id="pieimgPeriodico" accept="image/,.jpg,.png,.jpeg">
-                            <p id="actupieImg"></p>
+                            <label for="pieImgPer">Pie Imagen</label><br>
+                            <input type="text" class="form-control" name="pieImgPer" id="pieImgPer" >
 
                             <label for="fecpublPeriodico">Fecha publicacion</label>
                             <input type="date" class="form-control" name="fecpublPeriodico" id="fecpublPeriodico">
                         </div>
-                        <div class="col-md-12 col-sm-12 ">
-                            <div id="editor">
-                            </div>
-                            <div id="references">
-                            </div>
+                        <div class="col-md-12 col-sm-12 " id="divEditor">
+                            <div id="editor"></div>
 					    </div>
                     </div>
                     <input type="hidden" name="metodo" id="metodoPer" value="addPeriodico">
@@ -85,9 +81,5 @@
         </div>
     </div>
 </div>
-
-<script>
-	
-</script>
 
 <script src="js/periodico.js"></script>

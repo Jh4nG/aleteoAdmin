@@ -32,18 +32,13 @@ class Periodico extends Conexion{
             move_uploaded_file($f['imgPeriodico']['tmp_name'], $link);
         }
 
-        if($f['pieimgPeriodico']['tmp_name'] != ''){ // Mover archivo a carpeta
-            $nameImgPie="ImgPie".uniqid().'.'.explode(".", $f["pieimgPeriodico"]["name"])[1];
-            $linkPie = $this->aleteo["rutaImagenes"].$nameImgPie;
-            move_uploaded_file($f['pieimgPeriodico']['tmp_name'], $link);
-        }
+        
         $fecha = $p['fecpublicoPeriodico'];
-        $mesAct = substr($meses[date('n')-1],0,3);
         $fecha = substr($fecha,8,9).' '.substr($this->meses[substr($fecha,5,-3)-1],0,3).' '.substr($fecha,0,4);
 
-        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$nameImgPie,$fecha,$p['fecpublPeriodico']];
-        $sql = "INSERT INTO periodico(per_titulo,per_contratitulo,per_autor,per_texto,per_link_img,per_link_pie_img,fecha_publico,fecha_publicacion) 
-                        VALUES (?,?,?,?,?,?,?)";
+        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$p['pieImgPer'],$p['fecpublicoPeriodico'],$fecha,$p['fecpublPeriodico']];
+        $sql = "INSERT INTO periodico(per_titulo,per_contratitulo,per_autor,per_texto,per_link_img,per_link_pie_img,fecha_publico_date,fecha_publico,fecha_publicacion) 
+                        VALUES (?,?,?,?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
         if($rdb->execute($data)){
             echo json_encode(true);
@@ -81,25 +76,16 @@ class Periodico extends Conexion{
             $link = $this->aleteo["rutaImagenes"].$nameImg;
             move_uploaded_file($f['imgPeriodico']['tmp_name'], $link);
         }
-
-        if($f['pieimgPeriodico']['tmp_name'] != ''){ // Mover archivo a carpeta
-            if(file_exists($this->aleteo["rutaImagenes"].$data[0]->per_link_pie_img)){
-                unlink($this->aleteo["rutaImagenes"].$data[0]->per_link_pie_img);
-            }
-            $nameImgPie="ImgPie".uniqid().'.'.explode(".", $f["pieimgPeriodico"]["name"])[1];
-            $linkPie = $this->aleteo["rutaImagenes"].$nameImgPie;
-            move_uploaded_file($f['pieimgPeriodico']['tmp_name'], $link);
-        }
         $fecha = $p['fecpublicoPeriodico'];
-        $mesAct = substr($meses[date('n')-1],0,3);
         $fecha = substr($fecha,8,9).' '.substr($this->meses[substr($fecha,5,-3)-1],0,3).' '.substr($fecha,0,4);
-        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$nameImgPie,$fecha,$p['fecpublPeriodico'],$p['idPer']];
+        $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$p['pieImgPer'],$p['fecpublicoPeriodico'],$fecha,$p['fecpublPeriodico'],$p['idPer']];
         $sql = "UPDATE periodico SET per_titulo = ?
                                     ,per_contratitulo = ?
                                     ,per_autor = ?
                                     ,per_texto = ?
                                     ,per_link_img = ?
                                     ,per_link_pie_img = ?
+                                    ,fecha_publico_date = ?
                                     ,fecha_publico = ?
                                     ,fecha_publicacion = ?
                                 WHERE id_periodico = ?";
