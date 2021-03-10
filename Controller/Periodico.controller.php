@@ -96,6 +96,18 @@ class Periodico extends Conexion{
             echo json_encode(false);
         }
     }
+
+    public function deletePeriodico($parametro){
+        $id = $parametro['id'];
+        $sql="DELETE FROM periodico WHERE id_periodico = ?";
+        $rdb = $this->con_aleteo->prepare($sql);
+
+        if($rdb->execute([$id])){
+            echo json_encode(true);
+        }else{
+            echo json_encode(false);
+        }
+    }
     
 }
 

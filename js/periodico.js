@@ -142,11 +142,49 @@ var _Periodico = (function (){
         } );
     }
 
+    var deletePeriodico = (id)=>{
+        swal({
+            title: 'Precaución!',
+            text: 'Está seguro que desea eliminar la artículo con id '+ id +'?',
+            icon: 'warning',
+            type: 'warning',
+            buttons:{
+                confirm: {
+                    text : 'Aceptar',
+                    className : 'btn btn-primary',
+                    value: true,
+                },
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-danger',
+                    value: false,
+                }
+            }
+        })
+        .then(($response)=> {
+            if($response)
+            {
+                var ruta = 'Controller/Periodico.controller.php';
+                var data = {"metodo":"deletePeriodico","parametros":{'id':id}}
+                var type = 'post';
+                $.when(ajaxJson(ruta,data,type)).done((resp)=>{
+                    if(resp){
+                        swal('Éxito!','Se ha elimiando con éxito.',_success);
+                        listarPeriodico();
+                    }else{
+                        swal('Error!','No se ha podido registar. \n Contacte con el administrador',_error);
+                    }
+                });
+            }
+        });
+    }
+
     return {
         init:init,
         modalAdd:modalAdd,
         addPeriodico:addPeriodico,
-        modalEditPeriodico:modalEditPeriodico
+        modalEditPeriodico:modalEditPeriodico,
+        deletePeriodico:deletePeriodico
     }
 
 
