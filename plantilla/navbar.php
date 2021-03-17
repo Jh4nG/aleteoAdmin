@@ -33,6 +33,9 @@
                     <li id="navleftPeriodico">
                         <a href="#" onclick="_Admin.traerVista('Periodico/periodico','Periodico')" data-i18n="nav.page_layouts.1_column" class="menu-item">Periódico Digital</a>
                     </li>
+                    <li id="navleftApoyanos">
+                        <a href="#" onclick="_Admin.traerVista('Apoyanos/apoyanos','apoyanos')" data-i18n="nav.page_layouts.1_column" class="menu-item">Apóyanos</a>
+                    </li>
                 </ul>
             </li>
             

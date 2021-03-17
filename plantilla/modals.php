@@ -334,3 +334,113 @@
       </div>
     </div>
   </div>
+
+  <div class="modal" id="modalAnadirApoyanos" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Añadir Nuevos Items Apoyanos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="formAnadirApoyanos" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="tituloApoyanos" name="tituloApoyanos" placeholder="Título" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <textarea class="form-control" name="descripcionApoyanos" id="descripcionApoyanos" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="urlApoyanos" name="urlApoyanos" placeholder="Url Vídeo" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                      <label class="control-label"><i class="fas fa-file-image"></i> Cargar Imagen</label>
+                  </div>
+              </div>  
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input  id="imagenApoyanos" name="imagenApoyanos" type="file" accept="image/png, .jpeg, .jpg" required>
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Cargar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalEditarApoyanos" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Items Apoyanos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="formEditarApoyanos" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="tituloApoyanosEdit" name="tituloApoyanosEdit" placeholder="Título" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <textarea class="form-control" name="descripcionApoyanosEdit" id="descripcionApoyanosEdit" placeholder="Descripción" required></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="urlApoyanosEdit" name="urlApoyanosEdit" placeholder="Url Vídeo" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-8">
+                      <label class="control-label"><i class="fas fa-file-image"></i>Cargar Imagen si desea reemplazar la existente</label>
+                  </div>
+              </div>  
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input  id="imagenApoyanosEdit" name="imagenApoyanosEdit" type="file" accept="image/png, .jpeg, .jpg">
+                      </div>
+                  </div>
+              </div>
+              <input type="hidden" id="idApoyanos" name="idApoyanos">
+              <input type="hidden" id="imagenApoyanosBorrar" name="imagenApoyanosBorrar">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning">Editar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
