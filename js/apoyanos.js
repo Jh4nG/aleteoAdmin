@@ -129,7 +129,7 @@ $(document).ready(function () {
                 swal("Error", "Ha habido un problema!",_error);
             }
             $("#modalAnadirApoyanos").modal('hide');
-            _Organizaciones.listarApoyanos();
+            _Apoyanos.listarApoyanos();
         });
     });
 

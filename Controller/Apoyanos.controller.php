@@ -73,7 +73,7 @@ class Apoyanos extends Conexion
             descripcion = ?, imagen = ?, video = ?
             WHERE id = ?";
             $rdb = $this->con_aleteo->prepare($sql);
-            if($rdb->execute([$titulo, $descripcion, $link, $video, $id])){
+            if($rdb->execute([$titulo, $descripcion, $nameImg, $video, $id])){
                 echo json_encode('edit');
             }else{
                 echo json_encode('noedit');
