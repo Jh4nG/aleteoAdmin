@@ -6,6 +6,7 @@ class Periodico extends Conexion{
     public $meses;
     public function __construct(){
         parent::__construct();
+        date_default_timezone_set('America/Bogota');
         $this->meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     }
 
@@ -37,8 +38,9 @@ class Periodico extends Conexion{
         $fecha = substr($fecha,8,9).' '.substr($this->meses[substr($fecha,5,-3)-1],0,3).' '.substr($fecha,0,4);
 
         $data = [$p['titPeriodico'],$p['contitPeriodico'],$p['autorPeriodico'],$p['textPer'],$nameImg,$p['pieImgPer'],$p['fecpublicoPeriodico'],$fecha,$p['fecpublPeriodico']];
+        
         $sql = "INSERT INTO periodico(per_titulo,per_contratitulo,per_autor,per_texto,per_link_img,per_link_pie_img,fecha_publico_date,fecha_publico,fecha_publicacion) 
-                        VALUES (?,?,?,?,?,?,?,?)";
+                        VALUES (?,?,?,?,?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
         if($rdb->execute($data)){
             echo json_encode(true);
