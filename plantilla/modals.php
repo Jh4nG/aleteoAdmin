@@ -336,7 +336,7 @@
   </div>
 
   <div class="modal" id="modalAnadirApoyanos" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Añadir Nuevos Items Apoyanos</h5>
@@ -350,13 +350,6 @@
                   <div class="col-md-12">
                       <div class="form-group">
                           <input type="text" class="form-control" id="tituloApoyanos" name="tituloApoyanos" placeholder="Título" required>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="form-group">
-                          <textarea class="form-control" name="descripcionApoyanos" id="descripcionApoyanos" placeholder="Descripción" required></textarea>
                       </div>
                   </div>
               </div>
@@ -379,6 +372,11 @@
                       </div>
                   </div>
               </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 " id="divEditorApoyanos">
+                  <div id="editorApoyanos"></div>
+					      </div>
+					    </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success">Cargar</button>
@@ -410,13 +408,6 @@
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
-                          <textarea class="form-control" name="descripcionApoyanosEdit" id="descripcionApoyanosEdit" placeholder="Descripción" required></textarea>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="form-group">
                           <input type="text" class="form-control" id="urlApoyanosEdit" name="urlApoyanosEdit" placeholder="Url Vídeo" required>
                       </div>
                   </div>
@@ -433,6 +424,11 @@
                       </div>
                   </div>
               </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 " id="divEditorApoyanosEdit">
+                  <div id="editorApoyanosEdit"></div>
+					      </div>
+					    </div>
               <input type="hidden" id="idApoyanos" name="idApoyanos">
               <input type="hidden" id="imagenApoyanosBorrar" name="imagenApoyanosBorrar">
         </div>

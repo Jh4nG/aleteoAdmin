@@ -1,5 +1,7 @@
 var _Apoyanos = (function () {
     var TableApoyanos;
+    var viewFragment;
+    var modelFragment;
 
     TableApoyanos = $("#tableApoyanos").DataTable({
         pagingType: "numbers",
@@ -12,14 +14,15 @@ var _Apoyanos = (function () {
     });
 
     var modalAñadir = () => {
-        $("#tituloApoyanos").val("");
-        $("#descripcionApoyanos").val("");
-        $("#urlApoyanos").val("");
-        $("#imagenApoyanos").val("");
+        limpiarFormulario("formAnadirApoyanos");
         $("#modalAnadirApoyanos").modal("show");
+        contructEditor();
     };
 
     var modalEditApoyanos = (id) =>{
+        limpiarFormulario("formEditarApoyanos");
+        contructEditorEdit();
+        $('#editorApoyanos').html('');
         var ruta = 'Controller/Apoyanos.controller.php';
         var data = {"metodo":"listarApoyanos","parametros":{
             "id": id,
@@ -28,10 +31,16 @@ var _Apoyanos = (function () {
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
             $("#idApoyanos").val(id);
             $("#tituloApoyanosEdit").val(data[0].titulo);
-            $("#descripcionApoyanosEdit").val(data[0].descripcion);
+            // $("#descripcionApoyanosEdit").val(data[0].descripcion);
             $("#urlApoyanosEdit").val(data[0].video);
             $("#imagenApoyanosBorrar").val(data[0].imagen);
             $("#imagenApoyanosEdit").val('');
+
+            var content = data[0].descripcion;
+            var viewFragment = editorApoyanosEdit.data.processor.toView( content );
+            var modelFragment = editorApoyanosEdit.data.toModel( viewFragment );
+
+            editorApoyanosEdit.model.insertContent( modelFragment );
        
             $("#modalEditarApoyanos").modal('show');
         });
@@ -92,6 +101,38 @@ var _Apoyanos = (function () {
         });
     }
 
+    var contructEditor=()=>{
+        $('#editorApoyanos').remove();
+        $('#divEditorApoyanos').html('');
+        $('#divEditorApoyanos').html('<div id="editorApoyanos"></div>');
+        ClassicEditor
+        .create( document.querySelector( '#editorApoyanos' ), {
+            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+        } )
+        .then( editorApoyanos => {
+            window.editorApoyanos = editorApoyanos;
+        } )
+        .catch( err => {
+            console.error( err.stack );
+        } );
+    }
+
+    var contructEditorEdit=()=>{
+        $('#editorApoyanosEdit').remove();
+        $('#divEditorApoyanosEdit').html('');
+        $('#divEditorApoyanosEdit').html('<div id="editorApoyanosEdit"></div>');
+        ClassicEditor
+        .create( document.querySelector( '#editorApoyanosEdit' ), {
+            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+        } )
+        .then( editorApoyanosEdit => {
+            window.editorApoyanosEdit = editorApoyanosEdit;
+        } )
+        .catch( err => {
+            console.error( err.stack );
+        } );
+    }
+
     return {
         modalAñadir: modalAñadir,
         listarApoyanos:listarApoyanos,
@@ -102,13 +143,24 @@ var _Apoyanos = (function () {
 
 $(document).ready(function () {
     _Apoyanos.listarApoyanos();
+
+    // ClassicEditor
+    // .create( document.querySelector( '#editorApoyanos' ), {
+    //     // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+    // } )
+    // .then( editorApoyanos => {
+    //     window.editorApoyanos = editorApoyanos;
+    // } )
+    // .catch( err => {
+    //     console.error( err.stack );
+    // } );
     
     $("#formAnadirApoyanos").submit(function(event){
         event.preventDefault();
         var form_data = new FormData(this); //Creates new FormData object
         form_data.append('metodo', 'upload');
         form_data.append('titulo', $("#tituloApoyanos").val());
-        form_data.append('desc', $("#descripcionApoyanos").val());
+        form_data.append('desc', $('.ck-editor__editable').html());
         form_data.append('url', $("#urlApoyanos").val());
         
         $.ajax({
@@ -122,7 +174,7 @@ $(document).ready(function () {
     			swal("", "Espere!",_warning);
     		},
         }).done(function(response){
-            response = JSON.parse(response);
+            // response = JSON.parse(response);
             if (response == "insert"){
                 swal("Exito", "Los items han sido cargados!",_success);
             }else{
@@ -137,6 +189,7 @@ $(document).ready(function () {
         event.preventDefault();
         var form_data = new FormData(this); //Creates new FormData object
         form_data.append('metodo', 'edit');
+        form_data.append('descripcionApoyanosEdit',$('.ck-editor__editable').html());
         
         $.ajax({
             url : "Controller/Apoyanos.controller.php",
@@ -159,4 +212,5 @@ $(document).ready(function () {
             _Apoyanos.listarApoyanos();
         });
     });
+
 });
