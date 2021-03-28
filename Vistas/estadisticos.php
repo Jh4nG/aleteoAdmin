@@ -6,11 +6,11 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="pink">278</h3>
-                                <span>New Projects</span>
+                                <h3 class="pink" id="cantVisitasUsuarios"></h3>
+                                <span>Visitas de usuarios</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-bag2 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user1 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -23,8 +23,8 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="teal">156</h3>
-                                <span>New Clients</span>
+                                <h3 id="cantVisitasTotal"></h3>
+                                <span>Visitas totales</span>
                             </div>
                             <div class="media-right media-middle">
                                 <i class="icon-user1 teal font-large-2 float-xs-right"></i>
@@ -40,11 +40,11 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="deep-orange">64.89 %</h3>
-                                <span>Conversion Rate</span>
+                                <h3 class="deep-orange" id="dispoEscritorio"></h3>
+                                <span>Dispositivos escitorio</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-diagram deep-orange font-large-2 float-xs-right"></i>
+                                <i class="icon-desktop deep-orange font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -57,11 +57,11 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="cyan">423</h3>
-                                <span>Support Tickets</span>
+                                <h3 class="deep-blue" id="dispoMovil"></h3>
+                                <span>Dispositivos móviles</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-ios-help-outline cyan font-large-2 float-xs-right"></i>
+                                <i class="icon-mobile blue font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -75,16 +75,33 @@
         <div class="col-xl-8 col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label>Tipo</label>
+                                <select class="form-control" id="tipoFiltro">
+                                    <option value="1">Visitas totales</option>
+                                    <option value="2">Visitas de usuarios</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Fecha inicial</label>
+                                <input class="form-control" type="date" id="fechaIni" value="<?php echo date('Y-m-01');?>">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Fecha final</label>
+                                <input class="form-control" type="date" id="fechaFin" value="<?php echo date('Y-m-d');?>">
+                            </div>
+                        </div>
+                    </div>
                     <ul class="list-inline text-xs-center pt-2 m-0">
                         <li class="mr-1">
-                            <h6><i class="icon-circle warning"></i> <span class="grey darken-1">Remaining</span></h6>
                         </li>
                         <li class="mr-1">
-                            <h6><i class="icon-circle success"></i> <span class="grey darken-1">Completed</span></h6>
                         </li>
                     </ul>
-                    <div class="chartjs height-250">
-                        <canvas id="line-stacked-area" height="250"></canvas>
+                    <div class="chartjs height-250" id="canvasGrafica">
+                        <canvas id="line-stacked-area" height="100"></canvas>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -118,12 +135,14 @@
                 <div class="card-body">
                     <div class="position-relative">
                         <div class="chart-title position-absolute mt-2 ml-2 white">
-                            <h1 class="display-4">84%</h1>
-                            <span>Employees Satisfied</span>
+                            <!-- <h1 class="display-4">Visitas a páginas</h1> -->
+                            <span>Visitas a páginas</span>
                         </div>
-                        <canvas id="emp-satisfaction" class="height-400 block"></canvas>
+                        <div id="canvasGraficaDispositivo">
+                            
+                        </div>
                         <div class="chart-stats position-absolute position-bottom-0 position-right-0 mb-2 mr-3 white">
-                            <a href="#" class="btn bg-info bg-darken-3 mr-1 white">Statistics <i class="icon-stats-bars"></i></a> for the last year.
+                            <!-- <a href="#" class="btn bg-info bg-darken-3 mr-1 white">Statistics <i class="icon-stats-bars"></i></a> for the last year. -->
                         </div>
                     </div>
                 </div>
@@ -141,9 +160,9 @@
                             <i class="icon-user1 font-large-2 white"></i>
                         </div>
                         <div class="p-2 media-body">
-                            <h5 class="deep-orange">New Users</h5>
-                            <h5 class="text-bold-400">1,22,356</h5>
-                            <progress class="progress progress-sm progress-deep-orange mt-1 mb-0" value="45" max="100"></progress>
+                            <h5 class="deep-orange">Suscriptores</h5>
+                            <h5 class="text-bold-400"></h5>
+                            <!-- <progress class="progress progress-sm progress-deep-orange mt-1 mb-0" value="45" max="100"></progress> -->
                         </div>
                     </div>
                 </div>
@@ -155,8 +174,8 @@
                             <i class="icon-camera7 font-large-2 white"></i>
                         </div>
                         <div class="p-2 media-body">
-                            <h5>New Products</h5>
-                            <h5 class="text-bold-400">28</h5>
+                            <h5>Publicaciones</h5>
+                            <h5 class="text-bold-400"></h5>
                         </div>
                     </div>
                 </div>
@@ -178,7 +197,7 @@
         <div class="col-xl-8 col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Recent Invoices</h4>
+                    <h4 class="card-title">Listado de Visitantes</h4>
                     <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -240,91 +259,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Recent invoice with Statistics -->
-    <div class="row match-height">
-        <div class="col-xl-4 col-md-6 col-sm-12">
-            <div class="card" style="height: 440px;">
-                <div class="card-body">
-                    <img class="card-img-top img-fluid" src="../../app-assets/images/carousel/05.jpg" alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">Basic</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-outline-pink">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6 col-sm-12">
-            <div class="card" style="height: 440px;">
-                <div class="card-body">
-                    <div class="card-block">
-                        <h4 class="card-title">List Group</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <span class="tag tag-default tag-pill bg-primary float-xs-right">4</span> Cras justo odio
-                        </li>
-                        <li class="list-group-item">
-                            <span class="tag tag-default tag-pill bg-info float-xs-right">2</span> Dapibus ac facilisis in
-                        </li>
-                        <li class="list-group-item">
-                            <span class="tag tag-default tag-pill bg-warning float-xs-right">1</span> Morbi leo risus
-                        </li>
-                        <li class="list-group-item">
-                            <span class="tag tag-default tag-pill bg-success float-xs-right">3</span> Porta ac consectetur ac
-                        </li>
-                        <li class="list-group-item">
-                            <span class="tag tag-default tag-pill bg-danger float-xs-right">8</span> Vestibulum at eros
-                        </li>
-                    </ul>
-                    <div class="card-block">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-12 col-sm-12">
-            <div class="card" style="height: 440px;">
-                <div class="card-body">
-                    <div class="card-block">
-                        <h4 class="card-title">Carousel</h4>
-                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                    </div>
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item">
-                                <img src="../../app-assets/images/carousel/02.jpg" alt="First slide">
-                            </div>
-                            <div class="carousel-item active">
-                                <img src="../../app-assets/images/carousel/03.jpg" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="../../app-assets/images/carousel/01.jpg" alt="Third slide">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                            <span class="icon-prev" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                            <span class="icon-next" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <div class="card-block">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                 </div>
             </div>

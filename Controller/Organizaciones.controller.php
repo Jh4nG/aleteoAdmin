@@ -42,10 +42,18 @@ class Organizaciones extends Conexion
 		$code64 = base64_encode($bytes);
 		$extension = explode(".", $_FILES["imagenOrg"]["name"]);
 		$icon = "data:image/".$extension[1].";base64,".$code64; 
+        
+        // Modificaciones JHON 27-03-2020
+        $f= $_FILES;
+        if($f['imagenOrg']['tmp_name'] != ''){ // Mover archivo a carpeta
+            $nameImg="ImgOrg".uniqid().'.'.explode(".", $f["imagenOrg"]["name"])[1];
+            $link = $this->aleteo["rutaImagenes"].$nameImg;
+            move_uploaded_file($f['imagenOrg']['tmp_name'], $link);
+        }
 
-        $sql = "INSERT INTO organizaciones(titulo,descripcion,imagen,activo,tipo,url) VALUES(?,?,?,?,?,?)";
+        $sql = "INSERT INTO organizaciones(titulo,descripcion,imagen,imagen_link,activo,tipo,url) VALUES(?,?,?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
-        if($rdb->execute([$titulo, $descripcion, $icon, $activo, $tipo, $url])){
+        if($rdb->execute([$titulo, $descripcion, $nameImg, $activo, $tipo, $url])){
             echo json_encode('insert');
         }else{
             echo json_encode('noinsert');
@@ -68,11 +76,18 @@ class Organizaciones extends Conexion
             $extension = explode(".", $_FILES["imagenOrgEdit"]["name"]);
             $icon = "data:image/".$extension[1].";base64,".$code64;
 
+            $f= $_FILES;
+            if($f['imagenOrgEdit']['tmp_name'] != ''){ // Mover archivo a carpeta
+                $nameImg="ImgOrg".uniqid().'.'.explode(".", $f["imagenOrgEdit"]["name"])[1];
+                $link = $this->aleteo["rutaImagenes"].$nameImg;
+                move_uploaded_file($f['imagenOrgEdit']['tmp_name'], $link);
+            }
+
             $sql = "UPDATE organizaciones SET titulo = ?,
-            descripcion = ?, activo = ?, imagen = ?, tipo = ?, url = ?
-            WHERE id = ?";
+                    descripcion = ?, activo = ?, imagen = ?, imagen_link = ?, tipo = ?, url = ?
+                    WHERE id = ?";
             $rdb = $this->con_aleteo->prepare($sql);
-            if($rdb->execute([$titulo, $descripcion, $activo, $icon, $tipo, $url, $id])){
+            if($rdb->execute([$titulo, $descripcion, $activo, $icon, $nameImg, $tipo, $url, $id])){
                 echo json_encode('edit');
             }else{
                 echo json_encode('noedit');

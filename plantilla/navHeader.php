@@ -19,26 +19,26 @@
                     <li class="nav-item hidden-sm-down"><a href="#" class="nav-link nav-link-expand"><i class="ficon icon-expand2"></i></a></li>
                 </ul>
                 <ul class="nav navbar-nav float-xs-right">
-                    <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="ficon icon-bell4"></i><span class="tag tag-pill tag-default tag-danger tag-default tag-up">1</span></a>
-                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                        <li class="dropdown-menu-header">
-                        <h6 class="dropdown-header m-0"><span class="grey darken-2">Notificaciones</span><span class="notification-tag tag tag-default tag-danger float-xs-right m-0">1 Nuevo</span></h6>
-                        </li>
-                        <li class="list-group scrollable-container">
-                            <a href="javascript:void(0)" class="list-group-item">
-                                <div class="media">
-                                    <div class="media-left valign-middle"><i class="icon-cart3 icon-bg-circle bg-cyan"></i></div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading">You have new order!</h6>
-                                        <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p><small>
-                                        <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">30 minutes ago</time></small>
+                    <!-- <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="ficon icon-bell4"></i><span class="tag tag-pill tag-default tag-danger tag-default tag-up">1</span></a>
+                        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                            <li class="dropdown-menu-header">
+                                <h6 class="dropdown-header m-0"><span class="grey darken-2">Notificaciones</span><span class="notification-tag tag tag-default tag-danger float-xs-right m-0">1 Nuevo</span></h6>
+                            </li>
+                            <li class="list-group scrollable-container">
+                                <a href="javascript:void(0)" class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left valign-middle"><i class="icon-cart3 icon-bg-circle bg-cyan"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">You have new order!</h6>
+                                            <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p><small>
+                                            <time datetime="2015-06-11T18:29:20+08:00" class="media-meta text-muted">30 minutes ago</time></small>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-item text-muted text-xs-center">Read all notifications</a></li>
-                    </ul>
-                    </li>
+                                </a>
+                            </li>
+                            <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-item text-muted text-xs-center">Read all notifications</a></li>
+                        </ul>
+                    </li> -->
                     <li class="dropdown dropdown-user nav-item">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link">
                             <span class="">
@@ -46,8 +46,10 @@
                             </span>
                             <span class="user-name"><?php echo $_SESSION['aleteo_user']; ?></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item"><i class="icon-head"></i> Editar Peril</a>
-                            <div class="dropdown-divider"></div><a href="#" id="btnLogout" class="dropdown-item"><i class="icon-power3"></i> Salir</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <!-- <a href="#" class="dropdown-item"><i class="icon-head"></i> Editar Peril</a> -->
+                            <!-- <div class="dropdown-divider"></div> -->
+                            <a href="#" id="btnLogout" class="dropdown-item"><i class="icon-power3"></i> Salir</a>
                         </div>
                     </li>
                 </ul>

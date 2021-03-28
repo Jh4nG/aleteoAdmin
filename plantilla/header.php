@@ -47,4 +47,5 @@
     <link rel="stylesheet" href="assets/css/contents.css">
     <script src="js/ckeditor.js"></script>
     <script src="js/es.js"></script>
+    <script src="app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>
   </head>
