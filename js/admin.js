@@ -61,6 +61,25 @@ function limpiarFormulario (id){
 	$('#'+id)[0].reset();
 }
 
+function alertaWait (){
+	swal({
+		title: 'Espere!',
+		text: 'Cargando...',
+		icon: 'warning',
+		type: 'warning',
+		closeOnEsc: false,
+		closeOnClickOutside: false,
+		buttons:{
+			confirm: {
+				visible: false,
+			},
+			cancel: {
+				visible: false,
+			}
+		}
+	});
+}
+
 var lang_dataTable = {
 	"sLengthMenu": "Mostrar _MENU_ Registros",
 	"sZeroRecords": "No se encontraron resultados",

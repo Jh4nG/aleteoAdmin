@@ -11,11 +11,15 @@ class Estadisticos extends Conexion{
         $rdbVisitador = $this->getVisitadores($parametros['fechaIni'],$parametros['fechaFin']);
         $rdbVisitas = $this->getVisitas($parametros['fechaIni'],$parametros['fechaFin']);
         $rdbDispo = $this->getDispositivos($parametros['fechaIni'],$parametros['fechaFin']);
+        $rdbPodcast = $this->getPodcast($parametros['fechaIni'],$parametros['fechaFin']);
+        $rdbPeriodico = $this->getPeriodico($parametros['fechaIni'],$parametros['fechaFin']);
         
         echo json_encode(array(
             'visitador' => $rdbVisitador,
             'visitas' => $rdbVisitas,
             'dispositivos' => $rdbDispo,
+            'podcast' => $rdbPodcast,
+            'periodico' => $rdbPeriodico,
         ));
     }
 
@@ -38,7 +42,28 @@ class Estadisticos extends Conexion{
     }
 
     public function getDispositivos($fechaIni,$fechaFin){
-        $sql="SELECT COUNT(*) as cantidad, dispositivo FROM visitas WHERE fecha_visita BETWEEN ? AND ? GROUP BY dispositivo";
+        $sql = "UPDATE visitas SET dispositivo = 1 WHERE dispositivo IS NULL";
+        $rdb = $this->con_aleteo->prepare($sql);
+        $rdb->execute();
+        $sql="SELECT COUNT(*) as cantidad, dispositivo FROM visitas WHERE fecha_visita BETWEEN ? AND ? GROUP BY dispositivo ORDER BY dispositivo ASC";
+        $rdb = $this->con_aleteo->prepare($sql);
+        if($rdb->execute([$fechaIni,$fechaFin])){
+            $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
+            return $obj;
+        }
+    }
+
+    public function getPodcast($fechaIni,$fechaFin){
+        $sql="SELECT COUNT(*) as cantidad FROM podcast WHERE DATE(fecha_creacion) BETWEEN ? AND ?";
+        $rdb = $this->con_aleteo->prepare($sql);
+        if($rdb->execute([$fechaIni,$fechaFin])){
+            $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
+            return $obj;
+        }
+    }
+
+    public function getPeriodico($fechaIni,$fechaFin){
+        $sql="SELECT COUNT(*) as cantidad FROM periodico WHERE DATE(per_fecha_ingreso) BETWEEN ? AND ?";
         $rdb = $this->con_aleteo->prepare($sql);
         if($rdb->execute([$fechaIni,$fechaFin])){
             $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
@@ -87,6 +112,17 @@ class Estadisticos extends Conexion{
                 'labelPag' => $labelPag,
                 'dataPag' => $dataPag,
             ));
+        }
+    }
+
+    public function getVisitasTable($parametros){
+        $fechaIni = $parametros['fechaIni'];
+        $fechaFin = $parametros['fechaFin'];
+        $sql="SELECT * FROM visitas WHERE DATE(fecha_visita) BETWEEN ? AND ? ORDER BY id_vis DESC";
+        $rdb = $this->con_aleteo->prepare($sql);
+        if($rdb->execute([$fechaIni,$fechaFin])){
+            $obj = $rdb -> fetchAll(PDO::FETCH_OBJ);
+            echo json_encode($obj);
         }
     }
 

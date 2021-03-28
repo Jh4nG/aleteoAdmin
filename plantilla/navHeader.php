@@ -9,14 +9,18 @@
                         <img alt="branding logo" src="images/LogoNombre.png" data-expand="images/LogoNombre.png" data-collapse="images/LogoNombre.png" class="brand-logo" width="50">
                     </a>
                 </li>
-                <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
+                <li class="nav-item hidden-md-up float-xs-right">
+                    <a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container">
+                      <i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="navbar-container content container-fluid">
             <div id="navbar-mobile" class="collapse navbar-toggleable-sm">
                 <ul class="nav navbar-nav">
                     <li class="nav-item hidden-sm-down"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5">         </i></a></li>
-                    <li class="nav-item hidden-sm-down"><a href="#" class="nav-link nav-link-expand"><i class="ficon icon-expand2"></i></a></li>
+                    <!-- <li class="nav-item hidden-sm-down"><a href="#" class="nav-link nav-link-expand"><i class="ficon icon-expand2"></i></a></li> -->
                 </ul>
                 <ul class="nav navbar-nav float-xs-right">
                     <!-- <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="ficon icon-bell4"></i><span class="tag tag-pill tag-default tag-danger tag-default tag-up">1</span></a>
