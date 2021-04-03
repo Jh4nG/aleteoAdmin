@@ -43,6 +43,7 @@ class Organizaciones extends Conexion
 		$extension = explode(".", $_FILES["imagenOrg"]["name"]);
 		$icon = "data:image/".$extension[1].";base64,".$code64; 
         
+        
         // Modificaciones JHON 27-03-2020
         $f= $_FILES;
         if($f['imagenOrg']['tmp_name'] != ''){ // Mover archivo a carpeta
@@ -50,10 +51,9 @@ class Organizaciones extends Conexion
             $link = $this->aleteo["rutaImagenes"].$nameImg;
             move_uploaded_file($f['imagenOrg']['tmp_name'], $link);
         }
-
         $sql = "INSERT INTO organizaciones(titulo,descripcion,imagen,imagen_link,activo,tipo,url) VALUES(?,?,?,?,?,?,?)";
         $rdb = $this->con_aleteo->prepare($sql);
-        if($rdb->execute([$titulo, $descripcion, $nameImg, $activo, $tipo, $url])){
+        if($rdb->execute([$titulo, $descripcion, $icon, $nameImg, $activo, $tipo, $url])){
             echo json_encode('insert');
         }else{
             echo json_encode('noinsert');
