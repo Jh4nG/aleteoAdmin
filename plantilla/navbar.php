@@ -36,6 +36,9 @@
                     <li id="navleftApoyanos">
                         <a href="#" onclick="_Admin.traerVista('Apoyanos/apoyanos','apoyanos')" data-i18n="nav.page_layouts.1_column" class="menu-item">Apóyanos</a>
                     </li>
+                    <li id="navleftFuturo">
+                        <a href="#" onclick="_Admin.traerVista('Futuro/futuro','futuro')" data-i18n="nav.page_layouts.1_column" class="menu-item">Hacia el Futuro</a>
+                    </li>
                 </ul>
             </li>
             

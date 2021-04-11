@@ -105,7 +105,7 @@ var _Periodico = (function (){
         var type = 'post';
         $.when(ajaxJsonForm(ruta,data,type)).done((resp)=>{
             if(resp){
-                add = ($('#').val() == 'addPeriodico') ?'registrado':'editado';
+                add = ($('#metodoPed').val() == 'addPeriodico') ?'registrado':'editado';
                 swal('Éxito!','Se ha '+add+' con éxito.',_success);
                 limpiarFormulario('form-Periodico');
                 listarPeriodico();
