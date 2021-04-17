@@ -36,6 +36,9 @@
                     <li id="navleftApoyanos">
                         <a href="#" onclick="_Admin.traerVista('Apoyanos/apoyanos','apoyanos')" data-i18n="nav.page_layouts.1_column" class="menu-item">Apóyanos</a>
                     </li>
+                    <li id="navleftPublicidad">
+                        <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')" data-i18n="nav.page_layouts.1_column" class="menu-item">Publicidad</a>
+                    </li>
                 </ul>
             </li>
             

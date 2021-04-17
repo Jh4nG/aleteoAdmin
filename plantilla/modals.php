@@ -440,3 +440,48 @@
       </div>
     </div>
   </div>
+
+  <div class="modal" id="modalPublicidad" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Enviar Publicidad</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="control-label"> Tipo Publicidad</label>
+                <select name="publicidadModulo" id="publicidadModulo" class="form-control">
+                  <option value="9999999" selected>Seleccione una opción</option>
+                  <option value="podcast">Podcast</option>
+                  <option value="serie_web">Serie Web</option>
+                  <option value="periodico">Periódico</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="control-label"> Item</label>
+                <select name="publicidadItem" id="publicidadItem" class="form-control"></select>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+          <div id="publicidadPrevisualizar" class="row" style="text-align: center;"></div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" onclick="_Publicidad.sendPublicidad()" class="btn btn-success">Enviar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
