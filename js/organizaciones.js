@@ -82,7 +82,7 @@ var _Organizaciones = (function () {
             if(data){
                 $.each(data,(i,e)=>{
                     var activo = e.activo == 1 ? 'Activo' : 'Inactivo';
-                    var img = '<img width="195px" src="'+e.imagen+'"</img>';
+                    var img = '<img width="120px" src="'+e.imagen+'" />';
                     var edit = '<a href="#" onclick="_Organizaciones.modalEditOrg('+e.id+')" id="editarOrg'+e.id+'" data-toggle="tooltip" data-placement="left" data-original-title="Editar Organización"><span class="btn btn-warning btn-sm"><i class="far fa-edit fa-lg"></i></span></a>  ';
                     edit += '<a href="#" onclick="_Organizaciones.DeleteOrg('+e.id+')" id="deleteOrg'+e.id+'" data-toggle="tooltip" data-placement="right" data-original-title="Eliminar Organización"><span class="btn btn-danger btn-sm"><i class="far fa-times-circle fa-lg"></i></span></a>';
                     TableOrganizaciones.row.add([

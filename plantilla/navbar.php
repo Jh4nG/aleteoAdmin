@@ -38,6 +38,8 @@
                     </li>
                     <li id="navleftPublicidad">
                         <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')" data-i18n="nav.page_layouts.1_column" class="menu-item">Publicidad</a>
+                    <li id="navleftFuturo">
+                        <a href="#" onclick="_Admin.traerVista('Futuro/futuro','futuro')" data-i18n="nav.page_layouts.1_column" class="menu-item">Hacia el Futuro</a>
                     </li>
                 </ul>
             </li>
