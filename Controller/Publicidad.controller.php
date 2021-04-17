@@ -17,7 +17,7 @@ class Publicidad extends Conexion
         parent::__construct();
     }
 
-    public function EnviarPublicidad()
+    public function EnviarEmail()
     {
         $this->mail = new PHPMailer(true);
         $this->mail->isSMTP();
@@ -31,8 +31,9 @@ class Publicidad extends Conexion
 		$this->mail->isHTML(true);
 
         $this->mail->addAddress('fabianzabala22@gmail.com');
+        $this->mail->addAddress('gonzalez.angiepaola22@gmail.com');
 		$this->mail->Subject = 'prueba correo';
-		$this->mail->Body = 'prueba';
+		$this->mail->Body = $this->cuerpo;
 		$this->mail->AltBody = strip_tags('prueba');
 		$this->mail->CharSet = 'UTF-8';
 
@@ -45,6 +46,15 @@ class Publicidad extends Conexion
 
         var_dump($this->mail);
     }
+
+	public function EnviarPublicidad($parametro)
+	{
+		$tipo = $parametro['tipo'];
+		$this->cuerpo = $parametro['html'];
+
+		$this->EnviarEmail();
+		exit(var_dump($cuerpo));
+	}
 
 	public function listarItemsPublicidad($modulo)
 	{	

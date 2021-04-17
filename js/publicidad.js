@@ -1,5 +1,5 @@
 var _Publicidad = (function () {
-    var TablePublicidad, tarjetaPodcast, tarjetaPeriodico, tarjetaSerieWeb;
+    var TablePublicidad, tarjetaPodcast, tarjetaPeriodico, tarjetaSerieWeb, imagen;
 
     TablePublicidad = $("#tablePublicidad").DataTable({
         pagingType: "numbers",
@@ -37,6 +37,7 @@ var _Publicidad = (function () {
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
             $("#publicidadPrevisualizar").html('');
             $('#publicidadItem').html('');
+            imagen = '';
             $('#publicidadItem').append('<option value="9999999">Seleccione un item</option>')
             $.each(data, function(key, val){
                 $('#publicidadItem').append('<option value="'+ val.titulo+ '">'+val.titulo+'</option>');
@@ -45,8 +46,32 @@ var _Publicidad = (function () {
     }
 
     var sendPublicidad = () => {
+        var html = '';
+        var tipo = $('#publicidadModulo').val();
+        var tittle = $('#publicidadItem').val();
+
+        if (tipo == '9999999'){
+            swal("Advertencia!", "Debe seleccionar un tipo de publicidad!",_warning);
+            return false;
+        }
+        
+        if (tittle == '9999999'){
+            swal("Advertencia!", "Debe seleccionar un item a enviar!",_warning);
+            return false;
+        }
+
+        html = '<div id="publicidad" class="row" style="text-align: center;">'+
+                '<div class="col-md-12">'+
+                    '<h1><b>"<i>'+tittle+'</i>"</b></h1></div>'+
+                    imagen+
+                '</div>';
+        html = html.replace('70%', '40%');
+        
         var ruta = 'Controller/Publicidad.controller.php';
-        var data = {"metodo":"EnviarPublicidad"};
+        var data = {"metodo":"EnviarPublicidad","parametros":{
+            "tipo": tipo,
+            "html": html,
+        }};
         var type = 'post';
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
 
@@ -62,23 +87,35 @@ var _Publicidad = (function () {
         
         switch (modulo) {
             case 'podcast':
-                var imagen = '<div class="col-md-12">'+
-                            '<img width="70%" src="'+tarjetaPodcast+'"</img></div>';
+                imagen = '<div class="col-md-12">'+
+                            '<a href="https://aleteotransmedia.com/podcast.php">'+
+                                // '<img width="70%" src="'+tarjetaPodcast+'"</img>'+
+                                '<img width="70%" src="https://aleteotransmedia.com/publicidadPodcast.jpg"</img>'+
+                            '</a>'+
+                        '</div>';
             break;
 
             case 'serie_web':
-                var imagen = '<div class="col-md-12">'+
-                            '<img width="70%" src="'+tarjetaSerieWeb+'"</img></div>';
+                imagen = '<div class="col-md-12">'+
+                            '<a href="https://aleteotransmedia.com/podcast.php">'+
+                                // '<img width="70%" src="'+tarjetaSerieWeb+'"</img>'+
+                                '<img width="70%" src="https://aleteotransmedia.com/publicidadSerieWeb.jpg"</img>'+
+                            '</a>'+
+                        '</div>';
             break;
 
             case 'periodico':
-                var imagen = '<div class="col-md-12">'+
-                            '<img width="70%" src="'+tarjetaPeriodico+'"</img></div>';
+                imagen = '<div class="col-md-12">'+
+                            '<a href="https://aleteotransmedia.com/periodico.php">'+
+                                // '<img width="70%" src="'+tarjetaPeriodico+'"</img>'+
+                                '<img width="70%" src="https://aleteotransmedia.com/publicidadPeriodico.jpg"</img>'+
+                            '</a>'+
+                        '</div>';
             break;
                 
             default:
                 break;
-            }
+        }
         $("#publicidadPrevisualizar").append(imagen);
     }
 
