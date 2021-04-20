@@ -12,15 +12,12 @@
                     <table class="table-responsive display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact nowrap" id="tablePublicidad" width="100%">
                         <thead>
                             <tr>
-                                <td>Id </td>
-                                <td>Título </td>
-                                <td>Descripción </td>
-                                <td>Imagen </td>
-                                <td>fecha Creación </td>
-                                <td>Estado </td>
-                                <td>Tipo </td>
-                                <td>Url </td>
                                 <td>Opciones </td>
+                                <td>Id </td>
+                                <td>Tipo Publicidad </td>
+                                <td>Título </td>
+                                <td>Imagen </td>
+                                <td>fecha de envío </td>
                             </tr>
                         </thead>
                     </table>

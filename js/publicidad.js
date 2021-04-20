@@ -1,5 +1,20 @@
 var _Publicidad = (function () {
-    var TablePublicidad, tarjetaPodcast, tarjetaPeriodico, tarjetaSerieWeb, imagen;
+    var TablePublicidad, TableVerEmails, imagen, linkImagen;
+    _columnsPubli = [
+        {"width": "1%"},
+        {"width": "1%"},
+        {"width": "20%"},
+        {"width": "30%"},
+        {"width": "40%"},
+        {"width": "10%"},
+    ];
+
+    _columnsEmail = [
+        {"width": "1%"},
+        {"width": "30%"},
+        {"width": "30%"},
+        {"width": "30%"},
+    ];
 
     TablePublicidad = $("#tablePublicidad").DataTable({
         pagingType: "numbers",
@@ -10,19 +25,21 @@ var _Publicidad = (function () {
         paging: true,
         destroy: true,
         pageLength: 10,
+        columns: _columnsPubli,
         order: [[0, "asc"]],
     });
 
-    var tarjetas = () =>{
-        var ruta = 'Controller/Publicidad.controller.php';
-        var data = {"metodo":"traerTarjetas"};
-        var type = 'post';
-        $.when(ajaxJson(ruta,data,type)).done((data)=>{
-           tarjetaPodcast = data.podcast;
-           tarjetaPeriodico = data.periodico;
-           tarjetaSerieWeb = data.serieweb;
-        });
-    }
+    TableVerEmails = $("#tableVerEmails").DataTable({
+        pagingType: "numbers",
+        language: lang_dataTable,
+        autoWidth: false,
+        searching: false,
+        ordering: false,
+        paging: true,
+        destroy: true,
+        columns: _columnsEmail,
+        pageLength: 5,
+    });
 
     var modalPublicidad = () => {
         $("#modalPublicidad").modal('show');
@@ -60,16 +77,18 @@ var _Publicidad = (function () {
             return false;
         }
 
-        html = '<div id="publicidad" class="row" style="text-align: center;">'+
+        html = '<div id="publicidad" class="row" style="text-align: center;width:700px;margin-left:auto;margin-right:auto">'+
                 '<div class="col-md-12">'+
                     '<h1><b>"<i>'+tittle+'</i>"</b></h1></div>'+
                     imagen+
                 '</div>';
-        html = html.replace('70%', '40%');
+        html = html.replace('70%', '100%');
         
         var ruta = 'Controller/Publicidad.controller.php';
         var data = {"metodo":"EnviarPublicidad","parametros":{
             "tipo": tipo,
+            "titulo": tittle,
+            'imagen': linkImagen,
             "html": html,
         }};
         var type = 'post';
@@ -83,6 +102,8 @@ var _Publicidad = (function () {
             }else{
                 swal("Exito!", "Publicidad enviada!",_success);
             }
+
+            _Publicidad.listarPublicidades();
         });
     }
 
@@ -97,28 +118,27 @@ var _Publicidad = (function () {
             case 'podcast':
                 imagen = '<div class="col-md-12">'+
                             '<a href="https://aleteotransmedia.com/podcast.php" target="_blank">'+
-                                // '<img width="70%" src="'+tarjetaPodcast+'"</img>'+
                                 '<img width="70%" src="https://aleteotransmedia.com/publicidadPodcast.jpg"</img>'+
                             '</a>'+
                         '</div>';
-            break;
-
+                linkImagen = 'https://aleteotransmedia.com/publicidadPodcast.jpg';
+                break;
             case 'serie_web':
                 imagen = '<div class="col-md-12">'+
-                            '<a href="https://aleteotransmedia.com/podcast.php" target="_blank">'+
-                                // '<img width="70%" src="'+tarjetaSerieWeb+'"</img>'+
+                            '<a href="https://aleteotransmedia.com/serieweb.php" target="_blank">'+
                                 '<img width="70%" src="https://aleteotransmedia.com/publicidadSerieWeb.jpg"</img>'+
                             '</a>'+
                         '</div>';
-            break;
-
+                linkImagen = 'https://aleteotransmedia.com/publicidadSerieWeb.jpg';
+                break;
+                
             case 'periodico':
                 imagen = '<div class="col-md-12">'+
                             '<a href="https://aleteotransmedia.com/periodico.php" target="_blank">'+
-                                // '<img width="70%" src="'+tarjetaPeriodico+'"</img>'+
                                 '<img width="70%" src="https://aleteotransmedia.com/publicidadPeriodico.jpg"</img>'+
                             '</a>'+
                         '</div>';
+                linkImagen = 'https://aleteotransmedia.com/publicidadPeriodico.jpg';
             break;
                 
             default:
@@ -127,17 +147,67 @@ var _Publicidad = (function () {
         $("#publicidadPrevisualizar").append(imagen);
     }
 
+    var listarPublicidades =() =>{
+        $.ajax({
+            url : "Controller/Publicidad.controller.php",
+            type: "POST",
+            data : {"metodo":"listarPublicidades"},
+            dataType: 'json',
+            beforeSend: function () {
+                $("#tablePublicidad").DataTable().clear();
+            },
+        }).done(function(data){ 
+            if(data){
+                $.each(data,(i,e)=>{
+                    var veremails = '<a href="#" onclick="_Publicidad.modalVerEmails('+e.id+')" data-toggle="tooltip" data-placement="left" data-original-title="Ver Emails"><span class="btn btn-warning btn-sm"><i class="far fa-envelope fa-lg"></i></span></a>  ';
+                    var img = '<img width="200px" src="'+e.imagen+'" />';
+                    TablePublicidad.row.add([
+                        veremails,
+                        e.id,
+                        e.modulo,
+                        e.titulo,
+                        img,
+                        e.fecha_envio,
+                    ]).draw();
+                });
+            }
+        });
+    }
+
+    var modalVerEmails = (id) =>{
+        var ruta = 'Controller/Publicidad.controller.php';
+        var data = {"metodo":"consultarEmails","parametros":{
+            "id": id
+        }};
+        var type = 'post';
+        $("#tableVerEmails").DataTable().clear();
+        $.when(ajaxJson(ruta,data,type)).done((data)=>{
+            if(data){
+                $.each(data,(i,e)=>{
+                    TableVerEmails.row.add([
+                        e.nombres,
+                        e.email,
+                        e.telefono,
+                        e.fecha_suscripcion,
+                    ]).draw();
+                });
+            }
+        });
+        $("#modalPublicidadVerEmails").modal('show');
+    }
+
     return {
         modalPublicidad: modalPublicidad,
         sendPublicidad:sendPublicidad,
         listarItemsPublicidad:listarItemsPublicidad,
         previsualizar:previsualizar,
-        tarjetas:tarjetas
+        listarPublicidades:listarPublicidades,
+        modalVerEmails:modalVerEmails
     };
 })(jQuery);
 
 $(document).ready(function () {
-    _Publicidad.tarjetas();
+    _Publicidad.listarPublicidades();
 
     $("#publicidadModulo").change(function(event) {
 		event.preventDefault();

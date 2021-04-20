@@ -444,7 +444,7 @@
   <div class="modal" id="modalPublicidad" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-success">
           <h5 class="modal-title">Enviar Publicidad</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -480,6 +480,42 @@
         </div>
         <div class="modal-footer">
           <button type="button" onclick="_Publicidad.sendPublicidad()" class="btn btn-success">Enviar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalPublicidadVerEmails" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success">
+          <h5 class="modal-title">Emails Enviados</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-xs-12">
+              <div class="card">
+                <div class="card-body">
+                  <table class="table-responsive display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact nowrap" id="tableVerEmails" width="100%">
+                    <thead>
+                      <tr>
+                        <td>Nombres </td>
+                        <td>Email </td>
+                        <td>Telefono </td>
+                        <td>Fecha Suscripción </td>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
