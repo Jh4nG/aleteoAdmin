@@ -21,39 +21,56 @@ class Publicidad extends Conexion
     {
         $this->mail = new PHPMailer(true);
         $this->mail->isSMTP();
+		// $this->mail->SMTPSecure = 'ssl';
 		$this->mail->Host = 'smtp.hostinger.co';
 		$this->mail->SMTPAuth = true;
 		$this->mail->Username = 'aleteo@aleteotransmedia.com';
-		$this->mail->Password = '?RvkMSn$?9Vh';
-		// $this->mail->SMTPSecure = 'tls';
+		$this->mail->Password = ']sW$kv/e4W';
+		exit(var_dump($this->mail));
 		$this->mail->Port = 587;
 		$this->mail->setFrom('aleteo@aleteotransmedia.com', 'Aleteo Transmedia');
 		$this->mail->isHTML(true);
+		
+		// foreach($this->emails as $key => $email){
+		// 	$this->mail->addAddress($email['email']);
+		// }
+		$this->mail->addAddress('fabian.zabala22@gmail.com');
 
-        $this->mail->addAddress('fabianzabala22@gmail.com');
-        $this->mail->addAddress('gonzalez.angiepaola22@gmail.com');
-		$this->mail->Subject = 'prueba correo';
+		$this->mail->Subject = 'ALETEO - TRANSMEDIA AVANZA HACIA EL FUTURO (NUEVA PUBLICACIÓN)';
 		$this->mail->Body = $this->cuerpo;
 		$this->mail->AltBody = strip_tags('prueba');
 		$this->mail->CharSet = 'UTF-8';
 
 		try {
 	    	$this->mail->send();
-			echo json_encode(true);
+			// return true;
 		} catch (Exception $e) {
 			throw new Exception($this->mail->ErrorInfo);
 		}
-
-        var_dump($this->mail);
-    }
+	}
 
 	public function EnviarPublicidad($parametro)
 	{
 		$tipo = $parametro['tipo'];
 		$this->cuerpo = $parametro['html'];
+		$this->emails = array();
 
-		$this->EnviarEmail();
-		exit(var_dump($cuerpo));
+		$sql="SELECT email FROM suscripciones WHERE estado = 1";
+		$rdb = $this->con_aleteo->prepare($sql);
+
+		if($rdb->execute()){
+			while($rows = $rdb->fetch(PDO::FETCH_ASSOC)){
+				$this->emails[]['email'] = $rows['email'];
+			}
+			$send = $this->EnviarEmail();
+			if($send){
+				echo json_encode(true);
+			}else{
+				echo json_encode('error');
+			}
+		}else{
+			echo json_encode('nohay');
+		}
 	}
 
 	public function listarItemsPublicidad($modulo)

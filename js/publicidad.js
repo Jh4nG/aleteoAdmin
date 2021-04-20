@@ -73,8 +73,16 @@ var _Publicidad = (function () {
             "html": html,
         }};
         var type = 'post';
+        swal("", "Espere!",_warning);
         $.when(ajaxJson(ruta,data,type)).done((data)=>{
-
+            if(data == 'nohay'){
+                swal("Advertencia!", "No hay personas suscritas!",_warning);
+                return false;
+            }else if (data == 'error'){
+                swal("Advertencia!", "Hubo un erorr!",_warning);
+            }else{
+                swal("Exito!", "Publicidad enviada!",_success);
+            }
         });
     }
 
@@ -88,7 +96,7 @@ var _Publicidad = (function () {
         switch (modulo) {
             case 'podcast':
                 imagen = '<div class="col-md-12">'+
-                            '<a href="https://aleteotransmedia.com/podcast.php">'+
+                            '<a href="https://aleteotransmedia.com/podcast.php" target="_blank">'+
                                 // '<img width="70%" src="'+tarjetaPodcast+'"</img>'+
                                 '<img width="70%" src="https://aleteotransmedia.com/publicidadPodcast.jpg"</img>'+
                             '</a>'+
@@ -97,7 +105,7 @@ var _Publicidad = (function () {
 
             case 'serie_web':
                 imagen = '<div class="col-md-12">'+
-                            '<a href="https://aleteotransmedia.com/podcast.php">'+
+                            '<a href="https://aleteotransmedia.com/podcast.php" target="_blank">'+
                                 // '<img width="70%" src="'+tarjetaSerieWeb+'"</img>'+
                                 '<img width="70%" src="https://aleteotransmedia.com/publicidadSerieWeb.jpg"</img>'+
                             '</a>'+
@@ -106,7 +114,7 @@ var _Publicidad = (function () {
 
             case 'periodico':
                 imagen = '<div class="col-md-12">'+
-                            '<a href="https://aleteotransmedia.com/periodico.php">'+
+                            '<a href="https://aleteotransmedia.com/periodico.php" target="_blank">'+
                                 // '<img width="70%" src="'+tarjetaPeriodico+'"</img>'+
                                 '<img width="70%" src="https://aleteotransmedia.com/publicidadPeriodico.jpg"</img>'+
                             '</a>'+
