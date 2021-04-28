@@ -38,6 +38,12 @@
                     </li>
                     <li id="navleftPublicidad">
                         <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')" data-i18n="nav.page_layouts.1_column" class="menu-item">Publicidad</a>
+                    </li>
+
+                    <li id="navleftSerieWeb">
+                        <a href="#" onclick="_Admin.traerVista('SerieWeb/serieWeb','serieWeb')" data-i18n="nav.page_layouts.1_column" class="menu-item">Serie Web</a>
+                    </li>
+
                     <li id="navleftFuturo">
                         <a href="#" onclick="_Admin.traerVista('Futuro/futuro','futuro')" data-i18n="nav.page_layouts.1_column" class="menu-item">Hacia el Futuro</a>
                     </li>
@@ -58,8 +64,8 @@
             <li class=" nav-item">
                 <a href="#"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Usuarios</span></a>
             </li>
-            <li class=" nav-item">
-                <a href="#"><i class="icon-document-text"></i><span data-i18n="nav.support_documentation.main" class="menu-title">Marketing</span></a>
+            <li id="navleftPublicidad" class=" nav-item">
+                <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')"><i class="icon-document-text"></i><span data-i18n="nav.support_documentation.main" class="menu-title">Publicidad</span></a>
             </li>
         </ul>
     </div>
