@@ -1,5 +1,5 @@
 <?php 
-    include 'plantilla/validaSession.php';
+    // include 'plantilla/validaSession.php';
     include 'plantilla/header.php';
 ?>    
 

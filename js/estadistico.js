@@ -194,8 +194,9 @@ var _Estadistico = (function (){
                         e.pagina,
                         (e.dispositivo == 0)?'Escritorio':'Móvil',
                         e.fecha_visita,
-                    ]).draw();
+                    ]);
                 });
+                TablesEst.draw();
                 swal.close();
             }
         });

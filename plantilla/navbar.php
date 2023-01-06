@@ -61,9 +61,14 @@
             <li class=" navigation-header">
                 <span data-i18n="nav.category.support">Otros</span><i data-toggle="tooltip" data-placement="right" data-original-title="Support" class="icon-ellipsis icon-ellipsis"></i>
             </li>
-            <li class=" nav-item">
-                <a href="#"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Usuarios</span></a>
+            <li class=" nav-item" id="navleftUsers">
+                <a href="#" onclick="_Admin.traerVista('Users/users','Users')"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Participantes</span></a>
             </li>
+
+            <li class=" nav-item" id="navleftPerfiles">
+                <a href="#" onclick="_Admin.traerVista('Users/perfiles','Perfiles')"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Perfiles</span></a>
+            </li>
+
             <li id="navleftPublicidad" class=" nav-item">
                 <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')"><i class="icon-document-text"></i><span data-i18n="nav.support_documentation.main" class="menu-title">Publicidad</span></a>
             </li>
