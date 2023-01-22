@@ -1,9 +1,10 @@
 <!-- main menu-->
 <div data-scroll-to-active="true" class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
     <!-- main menu header-->
-    <div class="main-menu-header">
+    <!-- <div class="main-menu-header">
         <input type="text" placeholder="Search" class="menu-search form-control round"/>
-    </div>
+    </div> -->
+    <br>
     <!-- / main menu header-->
     <!-- main menu content-->
     <div class="main-menu-content">
@@ -47,6 +48,10 @@
                     <li id="navleftFuturo">
                         <a href="#" onclick="_Admin.traerVista('Futuro/futuro','futuro')" data-i18n="nav.page_layouts.1_column" class="menu-item">Hacia el Futuro</a>
                     </li>
+
+                    <li id="navleftSuscriptor">
+                        <a href="#" onclick="_Admin.traerVista('Suscriptores/suscriptor','suscriptor')" data-i18n="nav.page_layouts.1_column" class="menu-item">Suscriptores</a>
+                    </li>
                 </ul>
             </li>
             
@@ -69,7 +74,7 @@
                 <a href="#" onclick="_Admin.traerVista('Users/perfiles','Perfiles')"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Perfiles</span></a>
             </li>
 
-            <li id="navleftPublicidad" class=" nav-item">
+            <li class=" nav-item" id="navleftPublicidad">
                 <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')"><i class="icon-document-text"></i><span data-i18n="nav.support_documentation.main" class="menu-title">Publicidad</span></a>
             </li>
         </ul>

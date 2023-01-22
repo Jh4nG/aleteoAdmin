@@ -9,3 +9,19 @@ NOTE:
 ------
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+@font-face {
+    font-family: 'Nasalization';
+    src: url('../font/nasalization-rg.otf');
+}
+
+*{
+    font-family: 'Nasalization';
+	font-size: 15px;
+}
+
+.dataTable.table-sm > thead > tr{
+	background-color: #3c3c49;
+	color: white;
+}
