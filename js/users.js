@@ -40,7 +40,7 @@ var _Users = (function (){
                         edit,
                         e.du_nombres,
                         e.du_descripcion.substr(0,50)+' ....',
-                        e.du_img,
+                        `<img src="/../../aleteoGit/images/img-project/${e.du_img}" width="50" \>`,
                         e.rol_nombre,
                         e.fecha_creacion
                     ]).draw();

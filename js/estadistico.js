@@ -122,7 +122,7 @@ var _Estadistico = (function (){
                 scales: {
                     xAxes: [{
                         display: true,
-                        label: {
+                        ticks: {
                             fontColor: "#FFF",
                         }
                     }],

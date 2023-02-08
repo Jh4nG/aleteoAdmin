@@ -46,8 +46,9 @@ var _Futuro = (function (){
                         e.fut_imagen,
                         e.fecha_creacion_text,
                         e.fecha_creacion
-                    ]).draw();
+                    ]);
                 });
+                TablesFuturo.draw();
             }
         });
     }

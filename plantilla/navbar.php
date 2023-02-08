@@ -67,7 +67,7 @@
                 <span data-i18n="nav.category.support">Otros</span><i data-toggle="tooltip" data-placement="right" data-original-title="Support" class="icon-ellipsis icon-ellipsis"></i>
             </li>
             <li class=" nav-item" id="navleftUsers">
-                <a href="#" onclick="_Admin.traerVista('Users/users','Users')"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Participantes</span></a>
+                <a href="#" onclick="_Admin.traerVista('Users/users','Users')"><i class="icon-support"></i><span data-i18n="nav.support_raise_support.main" class="menu-title">Equipo</span></a>
             </li>
 
             <li class=" nav-item" id="navleftPerfiles">
@@ -76,6 +76,20 @@
 
             <li class=" nav-item" id="navleftPublicidad">
                 <a href="#" onclick="_Admin.traerVista('Publicidad/publicidad','publicidad')"><i class="icon-document-text"></i><span data-i18n="nav.support_documentation.main" class="menu-title">Publicidad</span></a>
+            </li>
+
+            <li class=" nav-item"><a href="#"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Museo Interactivo</span></a>
+                <ul class="menu-content">
+                    <li id="navleftestadisMuseo">
+                        <a href="#" onclick="_Admin.traerVista('Museo/Estadisticas/estadisMuseo','estadisMuseo')" data-i18n="nav.dash.main" class="menu-item">Estadísticas Museo</a>
+                    </li>
+                    <li id="navleftvoicefuture">
+                        <a href="#" onclick="_Admin.traerVista('Museo/Voice/voicefuture','voicefuture')" data-i18n="nav.dash.main" class="menu-item">Voces Futuro</a>
+                    </li>
+                    <li id="navleftstore">
+                        <a href="#" onclick="_Admin.traerVista('Museo/Store/store','store')" data-i18n="nav.dash.main" class="menu-item">Tienda Virtual</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

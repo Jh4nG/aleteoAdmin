@@ -105,6 +105,9 @@ var lang_dataTable = {
 	}
 };
 
+var APIMuseo =  (window.location.hostname == 'localhost') ? "http://localhost/swAleteoCrea/index" : "https://museointeractivoaleteo.com/api/index";
+var meses = ["","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
 var _Admin = (function (){
 
     var cerrarSession = () =>{

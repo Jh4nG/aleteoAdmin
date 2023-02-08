@@ -10,7 +10,7 @@
                                 <td>Nombres</td>
                                 <td>Teléfono </td>
                                 <td>Email </td>
-                                <td>Activo </td>
+                                <td>Estado </td>
                                 <td>Fecha suscripción </td>
                             </tr>
                         </thead>

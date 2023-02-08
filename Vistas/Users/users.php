@@ -9,7 +9,7 @@
         <div class="col-xl-12 col-lg-12 col-xs-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table-responsive display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact nowrap" id="tableUsers" width="100%">
+                    <table class="table-responsive display table-sm table table-striped table-hover dataTable table-bordered table-condensed compact" id="tableUsers" width="100%">
                         <thead>
                             <tr>
                                 <td></td>
