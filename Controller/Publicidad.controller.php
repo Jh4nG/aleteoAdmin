@@ -13,6 +13,13 @@ require_once dirname(__FILE__).'/Conexion.php';
 
 class Publicidad extends Conexion
 {
+	private $mail;
+	private $emails;
+	private $firma;
+	private $cuerpo;
+	private $tipo;
+	private $titulo;
+	private $imagen;
     public function __construct(){
         parent::__construct();
     }
@@ -44,10 +51,10 @@ class Publicidad extends Conexion
 		
 		$this->mail->SMTPDebug = 0;                                     // Enable verbose debug output
 		$this->mail->isSMTP();                                          // Send using SMTP
-		$this->mail->Host       = 'smtp.gmail.com';                     // Set the SMTP server to send through
-		$this->mail->SMTPAuth   = true;                                 // Enable SMTP authentication
-		$this->mail->Username   = 'proyectoaleteoproduccion@gmail.com';         // SMTP username
-		$this->mail->Password   = 'Karmabencion11';                        // SMTP password
+		$this->mail->Host       = $this->aleteo['Host'];
+		$this->mail->SMTPAuth   = $this->aleteo['SMTPAuth'];
+		$this->mail->Username   = $this->aleteo['Username'];
+		$this->mail->Password   = $this->aleteo['Password'];
 		$this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 		$this->mail->Port       = 587;                                  // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 		
